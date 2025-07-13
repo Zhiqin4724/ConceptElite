@@ -1,32 +1,24 @@
 <div class="map-app-container">
-<div class="main-container">
+  <div class="main-container">
     <div class="map-panel">
-      <google-map [center]="center" [zoom]="zoom" [options]="mapOptions"height="100%"
-      width="100%">
-        <map-marker *ngFor="let location of locations"
-                    [position]="{ lat: location.lat, lng: location.lng }"
-                    [options]="{
-                      icon: getMarkerIcon(location.id),
-                      title: location.title
-                    }"
-                    (markerClick)="onMarkerClick(location, $event)">
-        </map-marker>
-      </google-map>
+      <google-map [center]="center" [zoom]="zoom" [options]="mapOptions" height="100%" width="100%"
+                  (mapInitialized)="onMapReady($event)">
+        </google-map>
     </div>
-  
+
     <div class="list-panel">
       <h3>Available Locations</h3>
       <ul class="address-list">
         <li *ngFor="let location of locations"
             [class.highlighted]="selectedLocationId === location.id"
             (click)="onListClick(location)">
-          
+
           <h4 class="card-title">{{ location.title }}</h4>
-          
+
           <p class="card-address-line1">{{ location.address1 }}</p>
-          
+
           <p class="card-address-line2">{{ location.address2 }}</p>
-          
+
         </li>
       </ul>
     </div>
