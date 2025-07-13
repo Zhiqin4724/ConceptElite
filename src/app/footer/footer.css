@@ -1,0 +1,97 @@
+.footer-component{
+    background-color: #353535;
+    color: white;
+    height: 450px;
+    font-family: Georgia, serif;
+}
+
+.footer-title{
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    padding-top: 3%;
+    font-size:x-large;
+}
+.footer-information-template{
+    display: flex;
+    flex-direction: row;
+    height: 80%;
+    justify-content: center;
+}
+
+.footer-telephone, .footer-into, .footer-Social-Media{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer-telephone-list, .footer-info-list{
+
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 30%; */
+    margin-top: 5%;
+
+}
+.footer-telephone{
+    margin-right: 2%;
+}
+.footer-Social-Media{
+    margin-left: 2%;
+}
+.footer-telephone-title, .footer-info-title, .footer-Social-Media-Title{
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    margin-top: 7%;
+}
+.footer-telephone-number, .footer-info-location{
+    margin-top: 1%;
+}
+.footer-Social-Media-Instagram,
+.footer-Social-Media-SquareSpace {
+  width: 40px;              /* Set your desired size */
+  height: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  display: inline-block;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+
+.footer-Social-Media-Container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+}
+.footer-Social-Media-Email{
+    margin-top: 5%;
+}
+.footer-Social-Media-Other{
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-evenly;
+
+    width: 30%;
+    
+}
+.footer-Social-Media-Logo{
+    width: 150px;
+    height: 130px;
+    margin-top: 3%;
+    border: none;
+    outline: none;
+}
+.footer-Social-Media-Logo-picture{
+    width: 100%;
+    height: 100%;
+    
+}

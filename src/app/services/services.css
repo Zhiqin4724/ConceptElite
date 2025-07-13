@@ -1,0 +1,95 @@
+.services-card-component{
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    
+}
+.services-column{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0.5%;
+    height: 600px;
+    border-radius: 10px;
+
+}
+.services-card-img{
+    background-color: brown;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin-left: 0.25%;
+    margin-right: 0.25%;
+}
+.services-card-details{
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    display: flex;
+    flex-direction: row;
+
+}
+.services-card-picture img{
+    width: 70%;
+}
+.services-card-title{
+    font-size: 100px;
+}
+.services-card-picture{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.services-list-choices{
+    margin-left: 20%;
+    width: 100%;
+}
+.services-list-choices-title{
+    margin-top: 40%;
+    margin-bottom: 20%;
+    font-size: 24px;
+}
+.services-list-prices{
+    margin-left: 20%;
+    width: 100%;
+}
+.services-list-choices-detail{
+    font-size: 18px;
+    margin-top: 5%;
+}
+.services-card-img:hover .services-card-front-content {
+  transform: translateX(-100%); /* Moves the front content entirely out of view to the left */
+}
+.services-card-front-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0; /* Light grey background for the front */
+  display: flex; /* Use flexbox to easily center content */
+  flex-direction: column; /* Stack image and title vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  transition: transform 0.5s ease-in-out; /* Smooth slide animation over 0.6 seconds */
+  z-index: 2; /* Ensures the front content is on top initially */
+}
+.services-card-back-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white; /* The plain white background you requested */
+  z-index: 1; /* Sits beneath the front content */
+}
+.services-card-img:nth-of-type(2):hover .services-card-front-content {
+  transform: translateX(100%); /* Slides the front content completely right */
+}

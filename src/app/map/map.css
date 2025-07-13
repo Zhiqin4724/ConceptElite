@@ -1,0 +1,76 @@
+.map-app-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-container {
+    display: flex; /* Use flexbox for a side-by-side layout */
+    height: 70vh; /* Set a height for the entire container */
+    width: 80vw; /* Set a width for the entire container */
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  
+  /* UPDATED: Make the map-panel a flex container itself */
+  .map-panel {
+    flex-grow: 1; /* Make the map panel take up available space */
+    display: flex;
+    flex-direction: column; /* This isn't strictly necessary but is good practice */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .list-panel {
+    width: 400px; /* Set a fixed width for the list panel */
+    flex-shrink: 0;
+    padding: 1rem;
+    overflow-y: auto; /* Add scrollbar if content overflows */
+    background-color: #f9f9f9;
+    border-left: 1px solid #e0e0e0;
+  }
+  
+  .address-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .address-list li {
+    padding: 12px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .address-list li:hover {
+    background-color: #eef;
+    border-color: #b0c4de;
+  }
+  
+  /* Style for the highlighted item */
+  .address-list li.highlighted {
+    background-color: #e3f2fd; /* A light blue color */
+    border-color: #2196f3; /* A darker blue border */
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
+  }
+  
+  .address-list h4, .address-list p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .address-list p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  /* UPDATED: Use flex-grow to make the map fill the new flex container */
+  google-map {
+    display: block;
+    height: 1000px !important;
+  }
