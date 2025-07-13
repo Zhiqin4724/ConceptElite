@@ -23,8 +23,8 @@ interface Location {
 })
 export class Map implements OnInit {
   // Map options
-  center: google.maps.LatLngLiteral = { lat: 45.5017, lng: -73.5673 }; // Montreal, QC
-  zoom = 12;
+  center: google.maps.LatLngLiteral = { lat: 45.5217, lng: -73.6873 }; // Montreal, QC
+  zoom = 11;
   mapOptions: google.maps.MapOptions = {
     zoomControl: false,
     scrollwheel: true,
@@ -113,7 +113,7 @@ export class Map implements OnInit {
     //   this.infoWindow.close();
     // }
     // this.infoWindow = new google.maps.InfoWindow({
-    //   content: `<h3>${location.title}</h3><p>${location.address}</p>`
+    //   content: `<h3>${location.title}</h3><p>${location.address1}</p>`
     // });
     // this.infoWindow.open(marker.getMap(), marker);
   }
@@ -122,6 +122,8 @@ export class Map implements OnInit {
   // It only changes the selected ID to highlight the marker, no zoom.
   onListClick(location: Location) {
     this.selectedLocationId = location.id;
+    this.center = { lat: location.lat, lng: location.lng }; // Center the map on the marker
+    this.zoom = 12; // Zoom in to the selected location
   }
 
   // Optional: A function to get a custom icon based on selection state
@@ -132,7 +134,7 @@ export class Map implements OnInit {
         scaledSize: new google.maps.Size(48, 48) // Make it a bit bigger
       };
     } else {
-      return 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'; // A blue pushpin icon
+      return 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'; // A blue pushpin icon
     }
   }
 }
