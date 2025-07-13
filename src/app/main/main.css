@@ -1,0 +1,80 @@
+/* Styles to create scrollable space */
+.space-above {
+  height: 100vh; /* Make it take up full viewport height */
+  background-color: #e0f7fa; /* Light blue background */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.space-below {
+  height: 120vh; /* More height for content below */
+  background-color: #fffde7; /* Light yellow background */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Styles for your animated div container */
+.animated-container {
+  width: 80%;
+  max-width: 700px; /* Max width for better readability */
+  margin: 150px auto; /* Center it with some vertical spacing */
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+  text-align: center;
+  color: #333;
+}
+
+.animated-container h2 {
+  color: #007bff; /* Primary blue for heading */
+  margin-bottom: 15px;
+  font-size: 2em;
+}
+
+.animated-container p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.animated-container button {
+  background-color: #28a745; /* Green button */
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.animated-container button:hover {
+  background-color: #218838;
+}
+
+/* Styles for the second animated container */
+.another-animated-container {
+  width: 70%;
+  max-width: 500px;
+  margin: 200px auto; /* More vertical space */
+  padding: 30px;
+  background-color: #e6ffe6; /* Lighter green */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  color: #4CAF50; /* Green text */
+}
+
+.another-animated-container h3 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
