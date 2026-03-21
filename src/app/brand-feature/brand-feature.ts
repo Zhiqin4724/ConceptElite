@@ -6,20 +6,17 @@ import { MatGridListModule } from '@angular/material/grid-list';
   selector: 'app-brand-feature',
   imports: [CommonModule, MatGridListModule],
   templateUrl: './brand-feature.html',
-  styleUrl: './brand-feature.css'
+  styleUrl: './brand-feature.css',
 })
-
-
 export class BrandFeature {
   imageUrls: string[] = [
-    '../../assets/AlterEgo_logo.webp',
-    '../../assets/Amika_logo.png',
-    '../../assets/design-me_logo.png',
-    '../../assets/Kerastase_logo.png',
-    '../../assets/Moroccanoil_logo.png',
-    '../../assets/Nioxin_logo.png',
-    '../../assets/Olaplex_logo.png',
-    '../../assets/Redken_Logo.png'
-
+    '../../assets/product-Display/AlterEgo_logo.webp',
+    '../../assets/product-Display/Amika_logo.png',
+    '../../assets/product-Display/design-me_logo.png',
+    '../../assets/product-Display/Kerastase_logo.png',
+    '../../assets/product-Display/Moroccanoil_logo.png',
+    '../../assets/product-Display/Nioxin_logo.png',
+    '../../assets/product-Display/Olaplex_logo.png',
+    '../../assets/product-Display/Redken_Logo.png',
   ];
 }
