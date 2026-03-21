@@ -1,0 +1,210 @@
+/* Full width wrapper */
+.detail-page {
+  width: 100%;
+  padding: 40px 48px 64px;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: #f4f1ec;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* ─── Back link ─── */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #6b6560;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin-bottom: 36px;
+  transition: color 0.2s;
+}
+
+.back-link:hover { color: #c9a96e; }
+
+/* ─── Profile Section ─── */
+.profile-section {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-bottom: 56px;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px;
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.profile-info { flex: 1; }
+
+.specialty-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #c9a96e;
+  color: #fff;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.profile-name {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b6560;
+  font-size: 0.88rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin-bottom: 10px;
+}
+
+.info-row svg { color: #c9a96e; flex-shrink: 0; }
+
+.profile-bio {
+  color: #444;
+  line-height: 1.75;
+  font-size: 0.95rem;
+  margin: 16px 0 24px;
+  max-width: 520px;
+}
+
+.instagram-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #1a1a1a;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  transition: background 0.2s;
+}
+
+.instagram-btn:hover { background: #c9a96e; }
+
+/* ─── Portfolio Section ─── */
+.portfolio-section {
+  border-top: 1px solid #e0d9d0;
+  padding-top: 40px;
+}
+
+.portfolio-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+}
+
+.portfolio-label {
+  font-size: 0.8rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b6560;
+  font-weight: 600;
+}
+
+/* ─── Grid: 4 columns to fit 12 images nicely ─── */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.portfolio-item {
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e0d9d0;
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-item:hover img { transform: scale(1.05); }
+
+/* ─── Pagination ─── */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 48px;
+}
+
+button.back-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.page-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1.5px solid #d8d2c9;
+  background: #fff;
+  color: #1a1a1a;
+  font-size: 0.85rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-btn:hover:not([disabled]):not(.active) { border-color: #c9a96e; color: #c9a96e; }
+.page-btn.active { background: #1a1a1a; border-color: #1a1a1a; color: #fff; }
+.page-btn[disabled] { opacity: 0.25; cursor: not-allowed; }
+.page-btn.arrow { font-size: 1.2rem; }
+
+/* ─── Not found ─── */
+.not-found {
+  text-align: center;
+  padding: 80px 24px;
+  font-family: sans-serif;
+}
+
+.not-found a { color: #c9a96e; text-decoration: none; }
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .detail-page { padding: 32px 32px 48px; }
+  .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .detail-page { padding: 24px 16px 40px; }
+  .profile-section { flex-direction: column; align-items: center; text-align: center; }
+  .info-row { justify-content: center; }
+  .profile-bio { text-align: left; }
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-header { justify-content: flex-start; }
+}

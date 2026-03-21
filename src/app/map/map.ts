@@ -217,11 +217,6 @@ export class Map implements OnInit {
     }
   }
 
-  // Remove the old getMarkerIcon as we are now using PinElement
-  // getMarkerIcon(locationId: number): google.maps.Icon | google.maps.Symbol | string {
-  //   // ... (this method will no longer be used directly for Advanced Markers)
-  //   return '';
-  // }
 }
 
 // Add this import if you haven't already, needed for @ViewChild(GoogleMap)

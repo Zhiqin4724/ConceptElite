@@ -1,0 +1,270 @@
+{
+  "stylists": [
+    {
+      "id": 1,
+      "slug": "sophie-lemaire",
+      "name": "Sophie Lemaire",
+      "location": "Deux-Montagnes",
+      "specialty": "Coloriste",
+      "imageUrl": "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400&h=400&fit=crop",
+      "bio": "Sophie est une coloriste primée avec plus de 10 ans d'expérience dans les techniques de balayage.",
+      "instagram": "https://instagram.com",
+      "availability": "Lun–Ven, 9h–18h",
+      "portfolioImages": [
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=400&h=400&fit=crop"
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "marc-tremblay",
+      "name": "Marc Tremblay",
+      "location": "LaSalle",
+      "specialty": "Coiffeur homme",
+      "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop",
+      "bio": "Marc est spécialisé dans les coupes masculines modernes et classiques.",
+      "instagram": "https://instagram.com",
+      "availability": "Mar–Sam, 10h–19h",
+      "portfolioImages": [
+        "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1521119989659-a83eee488004?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&h=400&fit=crop"
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "isabelle-roy",
+      "name": "Isabelle Roy",
+      "location": "Dorval",
+      "specialty": "Styliste bridal",
+      "imageUrl": "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=400&fit=crop",
+      "bio": "Isabelle transforme chaque mariée en créant des coiffures sur mesure inoubliables.",
+      "instagram": "https://instagram.com",
+      "availability": "Lun–Sam, 9h–17h",
+      "portfolioImages": [
+        "https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=400&h=400&fit=crop"
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "julien-cote",
+      "name": "Julien Côté",
+      "location": "Duvernay",
+      "specialty": "Barber & Fade",
+      "imageUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+      "bio": "Julien maîtrise les techniques de barbier traditionnelles et modernes.",
+      "instagram": "https://instagram.com",
+      "availability": "Mer–Dim, 10h–18h",
+      "portfolioImages": [
+        "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=400&fit=crop"
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "emilie-gagnon",
+      "name": "Émilie Gagnon",
+      "location": "Longueuil",
+      "specialty": "Balayage & Mèches",
+      "imageUrl": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop",
+      "bio": "Émilie est experte en techniques de balayage naturel pour un résultat lumineux.",
+      "instagram": "https://instagram.com",
+      "availability": "Lun–Ven, 9h–18h",
+      "portfolioImages": [
+        "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400&h=400&fit=crop"
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "noemie-bouchard",
+      "name": "Noémie Bouchard",
+      "location": "Pointe-Claire",
+      "specialty": "Coupe & Brushing",
+      "imageUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+      "bio": "Noémie excelle dans les coupes tendance et les brushings volumisants.",
+      "instagram": "https://instagram.com",
+      "availability": "Mar–Sam, 9h–17h",
+      "portfolioImages": [
+        "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop"
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "antoine-fortin",
+      "name": "Antoine Fortin",
+      "location": "Brossard",
+      "specialty": "Kératine & Lissage",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
+      "bio": "Antoine est spécialiste des traitements de lissage et de kératine.",
+      "instagram": "https://instagram.com",
+      "availability": "Lun–Sam, 10h–19h",
+      "portfolioImages": [
+        "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=400&fit=crop"
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "lea-savard",
+      "name": "Léa Savard",
+      "location": "Deux-Montagnes",
+      "specialty": "Extensions cheveux",
+      "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+      "bio": "Léa est certifiée en pose d'extensions de cheveux naturels.",
+      "instagram": "https://instagram.com",
+      "availability": "Mer–Dim, 9h–17h",
+      "portfolioImages": [
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
+      ]
+    },
+    {
+      "id": 9,
+      "slug": "camille-dube",
+      "name": "Camille Dubé",
+      "location": "LaSalle",
+      "specialty": "Coloriste",
+      "imageUrl": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&h=400&fit=crop",
+      "bio": "Camille crée des looks colorés uniques avec une touche artistique moderne.",
+      "instagram": "https://instagram.com",
+      "availability": "Lun–Ven, 10h–18h",
+      "portfolioImages": [
+        "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400&h=400&fit=crop"
+      ]
+    },
+    {
+      "id": 10,
+      "slug": "felix-parent",
+      "name": "Félix Parent",
+      "location": "Dorval",
+      "specialty": "Coupe homme & femme",
+      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+      "bio": "Félix adapte chaque coupe à la morphologie et au style de vie de ses clients.",
+      "instagram": "https://instagram.com",
+      "availability": "Mar–Sam, 9h–18h",
+      "portfolioImages": [
+        "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1521119989659-a83eee488004?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&h=400&fit=crop"
+      ]
+    },
+    {
+      "id": 11,
+      "slug": "marie-claude-vezina",
+      "name": "Marie-Claude Vézina",
+      "location": "Duvernay",
+      "specialty": "Permanente & Ondulation",
+      "imageUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop",
+      "bio": "Marie-Claude redonne volume et texture aux cheveux avec des techniques douces.",
+      "instagram": "https://instagram.com",
+      "availability": "Lun–Ven, 9h–17h",
+      "portfolioImages": [
+        "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop"
+      ]
+    },
+    {
+      "id": 12,
+      "slug": "samuel-bergeron",
+      "name": "Samuel Bergeron",
+      "location": "Longueuil",
+      "specialty": "Barber & Rasage",
+      "imageUrl": "https://images.unsplash.com/photo-1463453091185-61582044d556?w=400&h=400&fit=crop",
+      "bio": "Samuel est un barbier classique qui maîtrise le rasage au couteau et les finitions.",
+      "instagram": "https://instagram.com",
+      "availability": "Mer–Dim, 10h–19h",
+      "portfolioImages": [
+        "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=400&fit=crop"
+      ]
+    },
+    {
+      "id": 13,
+      "slug": "jessica-lapointe",
+      "name": "Jessica Lapointe",
+      "location": "Pointe-Claire",
+      "specialty": "Balayage & Couleur",
+      "imageUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&h=400&fit=crop",
+      "bio": "Jessica est reconnue pour ses balayages soleil et ses colorations tendance.",
+      "instagram": "https://instagram.com",
+      "availability": "Lun–Sam, 9h–18h",
+      "portfolioImages": [
+        "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400&h=400&fit=crop"
+      ]
+    },
+    {
+      "id": 14,
+      "slug": "nicolas-morin",
+      "name": "Nicolas Morin",
+      "location": "Brossard",
+      "specialty": "Coupe & Styling",
+      "imageUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop",
+      "bio": "Nicolas crée des looks modernes et adaptés à chaque personnalité.",
+      "instagram": "https://instagram.com",
+      "availability": "Mar–Sam, 10h–18h",
+      "portfolioImages": [
+        "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1521119989659-a83eee488004?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&h=400&fit=crop"
+      ]
+    }
+  ]
+}
