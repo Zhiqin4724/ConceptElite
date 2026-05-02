@@ -4,17 +4,19 @@
         <img class="brand-title-img" src="assets/CE_LOGO/CE_TITLE.png" alt="Concept Elite title" />
     </div>
 
-    <nav class="top-nav inline-nav">
-        <a (click)="navigateTo('about-us')" style="cursor: pointer;">ABOUT US</a>
-        <a (click)="navigateTo('services')" style="cursor: pointer;">SERVICE</a>
-        <a (click)="navigateTo('location')" style="cursor: pointer;">LOCATION</a>
-    </nav>
+<!-- Inline nav (desktop) -->
+<nav class="top-nav inline-nav">
+<a *ngFor="let link of navLinks" (click)="navigateTo(link.fragment)" style="cursor: pointer;">
+    {{ link.label }}
+</a>
+</nav>
 
-    <nav class="top-nav dropdown-nav" [class.open]="isMenuOpen">
-        <a (click)="navigateTo('about-us')" style="cursor: pointer;">ABOUT US</a>
-        <a (click)="navigateTo('services')" style="cursor: pointer;">SERVICE</a>
-        <a (click)="navigateTo('location')" style="cursor: pointer;">LOCATION</a>
-    </nav>
+<!-- Dropdown nav (mobile) -->
+<nav class="top-nav dropdown-nav" [class.open]="isMenuOpen" (click)="$event.stopPropagation()">
+    <a *ngFor="let link of navLinks" (click)="navigateTo(link.fragment)" style="cursor: pointer;">
+        {{ link.label }}
+    </a>
+</nav>
 
     <button class="hamburger-button" type="button" aria-label="Toggle navigation" [attr.aria-expanded]="isMenuOpen"
         (click)="toggleMenu($event)">
