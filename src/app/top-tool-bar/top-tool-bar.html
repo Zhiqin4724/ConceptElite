@@ -1,1 +1,23 @@
-<p>top-tool-bar works!</p>
+<header class="top-tool-bar" [class.hidden]="isHidden">
+    <div class="brand-block" (click)="goHome()" style="cursor: pointer;">
+        <img class="brand-icon" src="assets/CE_LOGO/C_LOGO.png" alt="Concept Elite icon" />
+        <img class="brand-title-img" src="assets/CE_LOGO/CE_TITLE.png" alt="Concept Elite title" />
+    </div>
+
+    <nav class="top-nav inline-nav">
+        <a (click)="navigateTo('about-us')" style="cursor: pointer;">ABOUT US</a>
+        <a (click)="navigateTo('services')" style="cursor: pointer;">SERVICE</a>
+        <a (click)="navigateTo('location')" style="cursor: pointer;">LOCATION</a>
+    </nav>
+
+    <nav class="top-nav dropdown-nav" [class.open]="isMenuOpen">
+        <a (click)="navigateTo('about-us')" style="cursor: pointer;">ABOUT US</a>
+        <a (click)="navigateTo('services')" style="cursor: pointer;">SERVICE</a>
+        <a (click)="navigateTo('location')" style="cursor: pointer;">LOCATION</a>
+    </nav>
+
+    <button class="hamburger-button" type="button" aria-label="Toggle navigation" [attr.aria-expanded]="isMenuOpen"
+        (click)="toggleMenu($event)">
+        <img src="assets/CE_LOGO/menu 1.png" alt="Menu" class="hamburger-icon" />
+    </button>
+</header>

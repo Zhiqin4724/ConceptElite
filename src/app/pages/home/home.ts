@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { TopToolBar } from '../../top-tool-bar/top-tool-bar';
-import { Footer } from '../../footer/footer';
-import { Main } from '../../main/main';
 import { Map } from '../../map/map';
 import { BrandFeature } from '../../brand-feature/brand-feature';
 import { AboutUs } from '../../about-us/about-us';
@@ -16,9 +13,6 @@ import { StylistsCarouselComponent } from '../../carousel/stylist-carousel';
   imports: [
     CommonModule,
     MatGridListModule,
-    TopToolBar,
-    Footer,
-    Main,
     BrandFeature,
     Map,
     AboutUs,
@@ -26,16 +20,14 @@ import { StylistsCarouselComponent } from '../../carousel/stylist-carousel';
     StylistsCarouselComponent,
   ],
   template: `
-    <main class="main">
-      <app-top-tool-bar></app-top-tool-bar>
-      <app-main></app-main>
-      <app-about-us></app-about-us>
-      <app-services></app-services>
+    <main class="main" style="padding-top: 80px;">
+      <!-- <app-main></app-main> -->
+      <app-about-us id="about-us"></app-about-us>
+      <app-services id="services"></app-services>
       <app-stylists-carousel></app-stylists-carousel>
-      <app-map></app-map>
+      <app-map id="location"></app-map>
       <app-brand-feature></app-brand-feature>
-      <app-footer></app-footer>
     </main>
-  `
+  `,
 })
 export class HomeComponent {}

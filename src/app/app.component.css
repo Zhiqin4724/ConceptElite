@@ -1,3 +1,18 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 0px);
+}
+
+.app-content {
+  flex: 1;
+}
+
 @media screen and (max-width: 650px) {
 
 }
