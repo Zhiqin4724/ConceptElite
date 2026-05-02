@@ -1,0 +1,74 @@
+<section class="instagram-pictures-section">
+  <div class="section-header">
+    <div class="header-left">
+      <h2 class="section-title">Nos réalisations</h2>
+      <p class="section-subtitle">Découvrez nos plus belles créations</p>
+    </div>
+  </div>
+
+  <div class="instagram-picture-layout">
+
+    <!-- Main image: LEFT, portrait ratio -->
+    <div class="main-picture-display" *ngIf="selectedPicture">
+      <img [src]="selectedPicture.url" [alt]="selectedPicture.alt" class="main-picture-image" />
+    </div>
+
+    <!-- Right column: text TOP, carousel BOTTOM -->
+    <div class="picture-carousel-container">
+
+      <!-- Text block (mirrors the reference image, but on the right) -->
+      <div class="champion-text-block">
+<h2 class="champion-title">NOS PLUS <span>BELLES</span><br>CRÉATIONS</h2>        <p class="champion-subtitle">
+          Découvrez le travail de nos artistes, chaque réalisation
+          est unique et pensée pour vous mettre en valeur.
+        </p>
+        <div class="champion-actions">
+          <button class="btn-primary">VOIR LA SÉLECTION</button>
+          <button class="btn-secondary">TOUS NOS TRAVAUX</button>
+        </div>
+      </div>
+
+      <!-- Carousel pinned to bottom-right -->
+      <div class="carousel-wrapper">
+        <button class="carousel-btn" (click)="prev()" [disabled]="!canGoPrev" aria-label="Précédent">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="carousel-viewport">
+          <div class="carousel-track" [ngClass]="animationClass ? 'exit-' + (animationClass === 'enter-left' ? 'left' : 'right') : ''">
+            <div
+              *ngFor="let picture of currentSlide; trackBy: trackByPictureId"
+              class="picture-card"
+              [class.active]="selectedPicture?.id === picture.id"
+              (click)="openPicture(picture)"
+            >
+              <img [src]="picture.url" [alt]="picture.alt" class="picture-image" />
+              <span class="picture-label">{{ picture.alt }}</span>
+            </div>
+          </div>
+
+          <div class="carousel-track overlay" [ngClass]="animationClass" *ngIf="nextSlide.length">
+            <div
+              *ngFor="let picture of nextSlide; trackBy: trackByPictureId"
+              class="picture-card"
+              [class.active]="selectedPicture?.id === picture.id"
+              (click)="openPicture(picture)"
+            >
+              <img [src]="picture.url" [alt]="picture.alt" class="picture-image" />
+              <span class="picture-label">{{ picture.alt }}</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-btn" (click)="next()" [disabled]="!canGoNext" aria-label="Suivant">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
