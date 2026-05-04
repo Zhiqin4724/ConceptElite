@@ -1,1 +1,32 @@
-<p>about-us works!</p>
+<section class="about-us">
+  <div class="about-us__inner">
+    <ng-container *ngFor="let block of blocks(); let i = index">
+      <article
+        class="about-us__row"
+        [class.about-us__row--reverse]="i % 2 === 1"
+      >
+        <div class="about-us__media">
+          <img [src]="block.image" [alt]="block.imageAlt" loading="lazy" />
+        </div>
+
+        <div class="about-us__content">
+          <div class="about-us__eyebrow">{{ block.eyebrow }}</div>
+          <h2 class="about-us__title">{{ block.title }}</h2>
+          <p class="about-us__body">{{ block.body }}</p>
+          <p class="about-us__welcome" *ngIf="block.welcome">
+            <strong>{{ block.welcome }}</strong>
+          </p>
+          <button
+            *ngIf="block.cta"
+            type="button"
+            class="about-us__cta"
+            (click)="scrollTo(block.cta.targetId)"
+          >
+            {{ block.cta.label }}
+          </button>
+        </div>
+      </article>
+    </ng-container>
+  </div>
+</section>
+

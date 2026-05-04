@@ -1,0 +1,138 @@
+/* =========================================================================
+   ABOUT US — split-row layout
+   Two stacked rows: row 1 image-left, row 2 image-right.
+   Themed for both coiffure (light) and barber (dark) modes via global vars.
+   ========================================================================= */
+
+.about-us {
+  padding: clamp(56px, 7vw, 110px) clamp(20px, 5vw, 64px);
+  background: var(--ce-bg, #f4f4f5);
+  color: var(--ce-text, #1a1a1d);
+}
+
+.about-us__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(48px, 7vw, 96px);
+}
+
+.about-us__row {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+}
+
+.about-us__row--reverse .about-us__media { order: 2; }
+.about-us__row--reverse .about-us__content { order: 1; }
+
+/* ---------- Media ---------- */
+.about-us__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #e7e5e4;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    0 18px 40px rgba(0, 0, 0, 0.10);
+}
+
+.about-us__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.about-us__media:hover img { transform: scale(1.03); }
+
+/* ---------- Content ---------- */
+.about-us__content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.about-us__eyebrow {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ce-muted, #6b6b70);
+  margin: 0;
+}
+
+.about-us__title {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: 0.005em;
+  margin: 0;
+  color: inherit;
+}
+
+.about-us__body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0;
+  color: inherit;
+  opacity: 0.92;
+}
+
+.about-us__welcome {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.05rem;
+  margin: 0;
+  color: inherit;
+}
+
+/* ---------- CTA ---------- */
+.about-us__cta {
+  align-self: flex-start;
+  margin-top: 12px;
+  padding: 16px 36px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ce-cta-text, #ffffff);
+  background: var(--ce-cta-bg, #1a1a1d);
+  border: 1px solid var(--ce-cta-bg, #1a1a1d);
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.about-us__cta:hover {
+  background: var(--ce-cta-hover, #4f1d1a);
+  border-color: var(--ce-cta-hover, #4f1d1a);
+  transform: translateY(-1px);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .about-us__row,
+  .about-us__row--reverse {
+    grid-template-columns: 1fr;
+  }
+  .about-us__row--reverse .about-us__media,
+  .about-us__row--reverse .about-us__content {
+    order: initial;
+  }
+  .about-us__media { aspect-ratio: 16 / 10; }
+}
+
+/* ---------- Theme tweaks ---------- */
+html.theme-barber .about-us__media {
+  background: #1f2024;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 18px 40px rgba(0, 0, 0, 0.45);
+}
+html.theme-barber .about-us__eyebrow { color: var(--ce-accent-gold, #d4a64a); }

@@ -1,34 +1,333 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* ============================================================
+   THEME TOKENS
+   - Coiffure (femme): RED + GOLD on GREY
+   - Barber: GOLD + WHITE on BLACK
+   The /shop page intentionally keeps Material's neutral look,
+   so we scope all heavy overrides with `:not(app-shop ...)` via
+   the body-level theme classes; the shop's own component CSS
+   already owns its visuals.
+   ============================================================ */
+
+:root,
+html.theme-coiffure {
+    /* Greys */
+    --ce-bg: #f4f4f5;
+    --ce-surface: #e7e7ea;
+    --ce-surface-2: #d4d4d8;
+    --ce-text: #1a1a1d;
+    --ce-muted: #5a5a60;
+    --ce-card-bg: #ffffff;
+    --ce-card-border: #c7c7cc;
+
+    /* Reds + golds */
+    --ce-accent: #8c1e1b;          /* brand red */
+    --ce-accent-deep: #4f1d1a;     /* burgundy */
+    --ce-accent-gold: #c59a78;     /* warm gold */
+    --ce-accent-bronze: #8d745b;
+
+    --ce-toolbar-bg: #1a1a1d;      /* dark grey bar so red/gold pop */
+    --ce-toolbar-text: #f4f4f5;
+    --ce-toolbar-hover: #c59a78;
+
+    --ce-cta-bg: #8c1e1b;
+    --ce-cta-text: #ffffff;
+    --ce-cta-hover: #4f1d1a;
+}
+
+html.theme-barber {
+    /* Black + white */
+    --ce-bg: #0c0c0d;
+    --ce-surface: #141416;
+    --ce-surface-2: #1c1d20;
+    --ce-text: #ffffff;
+    --ce-muted: #c9c9cc;
+    --ce-card-bg: #16171a;
+    --ce-card-border: #2a2b2f;
+
+    /* Gold accents */
+    --ce-accent: #d4a64a;
+    --ce-accent-deep: #8a6a26;
+    --ce-accent-gold: #d4a64a;
+    --ce-accent-bronze: #8d745b;
+
+    --ce-toolbar-bg: #000000;
+    --ce-toolbar-text: #ffffff;
+    --ce-toolbar-hover: #d4a64a;
+
+    --ce-cta-bg: #d4a64a;
+    --ce-cta-text: #0c0c0d;
+    --ce-cta-hover: #e8bb5a;
+}
+
+/* ---- Body / global text ---- */
+html.theme-coiffure body,
+html.theme-barber body {
+    background: var(--ce-bg);
+    color: var(--ce-text);
+}
+
+/* ============================================================
+   COMPONENT THEMING
+   The shop page is excluded by scoping overrides under
+   `app-root > app-top-tool-bar` and individual section selectors
+   that don't appear inside <app-shop>.
+   ============================================================ */
+
+/* ---- Top tool bar (both themes) ---- */
+.top-tool-bar {
+    background: var(--ce-toolbar-bg) !important;
+    color: var(--ce-toolbar-text) !important;
+}
+.top-tool-bar .top-nav a,
+.top-tool-bar .inline-nav a,
+.top-tool-bar .dropdown-nav a {
+    color: var(--ce-toolbar-text) !important;
+}
+.top-tool-bar .top-nav a:hover,
+.top-tool-bar .inline-nav a:hover,
+.top-tool-bar .dropdown-nav a:hover {
+    color: var(--ce-toolbar-hover) !important;
+}
+.top-tool-bar .dropdown-nav {
+    background: var(--ce-toolbar-bg) !important;
+    color: var(--ce-toolbar-text) !important;
+    border: 1px solid var(--ce-accent-gold);
+}
+.top-tool-bar .hamburger-icon {
+    /* Keep the hamburger visible on both dark toolbars. */
+    filter: brightness(0) invert(1);
+}
+
+.theme-toggle {
+    color: var(--ce-accent-gold) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.12em !important;
+}
+
+/* ---- Services cards ---- */
+html.theme-coiffure .services-card-front-content {
+    background-color: var(--ce-card-bg) !important;
+    color: var(--ce-text) !important;
+}
+html.theme-coiffure .services-card-back-content {
+    background-color: var(--ce-surface) !important;
+    color: var(--ce-text) !important;
+}
+html.theme-coiffure .services-card-img {
+    background-color: var(--ce-accent) !important;
+}
+html.theme-coiffure .services-list-choices-title {
+    color: var(--ce-accent) !important;
+}
+
+html.theme-barber .services-card-front-content {
+    background-color: #1f2024 !important;
+    color: var(--ce-text) !important;
+    border: 1px solid var(--ce-card-border);
+}
+html.theme-barber .services-card-back-content {
+    background-color: #1f2024 !important;
+    color: var(--ce-text) !important;
+}
+html.theme-barber .services-card-img {
+    background-color: #2a2b2f !important;
+}
+html.theme-barber .services-list-choices-title {
+    color: #ffffff !important;
+}
+html.theme-barber .services-list-choices-detail {
+    color: #ffffff !important;
+}
+
+/* ---- Map / location list ---- */
+html.theme-coiffure .list-panel {
+    background-color: var(--ce-surface) !important;
+    border-left: 1px solid var(--ce-card-border) !important;
+    color: var(--ce-text);
+}
+html.theme-coiffure .address-list li {
+    background-color: var(--ce-card-bg) !important;
+    border-color: var(--ce-card-border) !important;
+    color: var(--ce-text);
+}
+html.theme-coiffure .address-list li:hover {
+    background-color: #f4f4f5 !important;
+    border-color: var(--ce-accent) !important;
+}
+html.theme-coiffure .address-list li.highlighted {
+    background-color: #fdecec !important;
+    border-color: var(--ce-accent) !important;
+    box-shadow: 0 2px 8px rgba(140, 30, 27, 0.2);
+}
+html.theme-coiffure .address-list p { color: var(--ce-muted) !important; }
+
+html.theme-barber .list-panel {
+    background-color: var(--ce-surface) !important;
+    border-left: 1px solid var(--ce-card-border) !important;
+    color: var(--ce-text);
+}
+html.theme-barber .address-list li {
+    background-color: var(--ce-card-bg) !important;
+    border-color: var(--ce-card-border) !important;
+    color: var(--ce-text);
+}
+html.theme-barber .address-list li:hover {
+    background-color: #1f2024 !important;
+    border-color: var(--ce-accent-gold) !important;
+}
+html.theme-barber .address-list li.highlighted {
+    background-color: #2a230f !important;
+    border-color: var(--ce-accent-gold) !important;
+    box-shadow: 0 2px 8px rgba(212, 166, 74, 0.25);
+}
+html.theme-barber .address-list p { color: var(--ce-muted) !important; }
+
+/* ---- Footer ---- */
+html.theme-coiffure app-footer { background: var(--ce-toolbar-bg); color: var(--ce-toolbar-text); }
+html.theme-barber app-footer { background: var(--ce-toolbar-bg); color: var(--ce-toolbar-text); }
+
+/* ---- Generic section text ---- */
+/* Barber: alternate section backgrounds for visual rhythm.
+   Page order (see home.ts): hero -> about-us -> services -> carousel
+   -> instagram-pics -> instagram-videos -> map -> brand-feature.
+   Even slots use --ce-bg (deepest), odd slots use --ce-surface (lifted). */
+html.theme-barber app-about-us,
+html.theme-barber app-instagram-pictures,
+html.theme-barber app-map {
+    background: var(--ce-bg);
+    color: var(--ce-text);
+}
+html.theme-barber app-services,
+html.theme-barber app-stylists-carousel,
+html.theme-barber app-instagram-videos,
+html.theme-barber app-brand-feature {
+    background: var(--ce-surface);
+    color: var(--ce-text);
+}
+html.theme-coiffure app-about-us,
+html.theme-coiffure app-instagram-pictures,
+html.theme-coiffure app-instagram-videos,
+html.theme-coiffure app-stylists-carousel,
+html.theme-coiffure app-services {
+    background: var(--ce-bg);
+    color: var(--ce-text);
+}
+
+/* Highlight section headings in the active accent. */
+html.theme-coiffure h1, html.theme-coiffure h2, html.theme-coiffure h3 {
+    color: var(--ce-text);
+}
+html.theme-coiffure h2 span,
+html.theme-coiffure .champion-title span,
+html.theme-coiffure .section-title span {
+    color: var(--ce-accent) !important;
+}
+html.theme-barber h1, html.theme-barber h2, html.theme-barber h3 {
+    color: var(--ce-text);
+}
+html.theme-barber h2 span,
+html.theme-barber .champion-title span,
+html.theme-barber .section-title span {
+    color: var(--ce-accent-gold) !important;
+}
+
+/* CTA buttons used in feature blocks */
+html.theme-coiffure .btn-primary {
+    background: var(--ce-cta-bg) !important;
+    color: var(--ce-cta-text) !important;
+    border: none;
+}
+html.theme-coiffure .btn-primary:hover { background: var(--ce-cta-hover) !important; }
+html.theme-coiffure .btn-secondary {
+    background: transparent !important;
+    color: var(--ce-accent) !important;
+    border: 1px solid var(--ce-accent) !important;
+}
+html.theme-barber .btn-primary {
+    background: var(--ce-cta-bg) !important;
+    color: var(--ce-cta-text) !important;
+    border: none;
+}
+html.theme-barber .btn-primary:hover { background: var(--ce-cta-hover) !important; }
+html.theme-barber .btn-secondary {
+    background: transparent !important;
+    color: var(--ce-accent-gold) !important;
+    border: 1px solid var(--ce-accent-gold) !important;
+}
+
+/* ---- Brand logos always on white (transparent PNGs) ---- */
+app-brand-feature {
+    display: block;
+    background: #ffffff;
+    padding: 24px 0;
+}
+html.theme-barber app-brand-feature,
+html.theme-coiffure app-brand-feature {
+    background: #ffffff !important;
+}
+
+/* ============================================================
+   SHOP PAGE: keep its own visuals untouched.
+   The shop component scopes its styles, but we make sure no
+   global theme rule above leaks in by neutralising the body-
+   level color/background inside <app-shop>.
+   ============================================================ */
+app-shop {
+    color: initial;
+    background: #ffffff;
+    display: block;
+}
+html.theme-barber app-shop,
+html.theme-coiffure app-shop {
+    background: #ffffff !important;
+    color: #1a1a1d !important;
+}
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
 html {
     scroll-behavior: smooth;
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* ---------- Theme tokens ---------- */
+/* Coiffure palette taken from the official Concept Élite brand manual:
+   #F8EBE6 blush, #E3D9D1 cream, #D1BBAF taupe, #C59A78 gold, #8D745B bronze,
+   #8C1E1B brand red, #4F1D1A deep burgundy, #140B09 near-black. */
 :root,
 html.theme-coiffure {
     --ce-bg: #ffffff;
-    --ce-surface: #f4efe7;
-    --ce-text: #121212;
-    --ce-muted: #555555;
-    --ce-accent: #8c1e1b;       /* burgundy */
-    --ce-accent-soft: #e7cd78;  /* gold */
-    --ce-toolbar-bg: #f4efe7;
-    --ce-toolbar-text: #121212;
+    --ce-surface: #f8ebe6;        /* blush base */
+    --ce-surface-2: #e3d9d1;      /* cream */
+    --ce-text: #140b09;           /* near-black */
+    --ce-muted: #4f1d1a;          /* deep burgundy text */
+    --ce-accent: #8c1e1b;         /* brand red */
+    --ce-accent-deep: #4f1d1a;    /* burgundy */
+    --ce-accent-gold: #c59a78;    /* warm gold */
+    --ce-accent-bronze: #8d745b;  /* bronze */
+    --ce-toolbar-bg: #f8ebe6;
+    --ce-toolbar-text: #140b09;
     --ce-toolbar-hover: #8c1e1b;
     --ce-card-bg: #ffffff;
-    --ce-card-border: #e0e0e0;
+    --ce-card-border: #d1bbaf;
 }
 
 html.theme-barber {
     --ce-bg: #0f0f10;
     --ce-surface: #17181b;
+    --ce-surface-2: #1c1d20;
     --ce-text: #f1ece1;
     --ce-muted: #b3aea3;
-    --ce-accent: #d4a64a;        /* warm gold */
-    --ce-accent-soft: #6b4f1d;
+    --ce-accent: #d4a64a;         /* warm gold */
+    --ce-accent-deep: #6b4f1d;
+    --ce-accent-gold: #d4a64a;
+    --ce-accent-bronze: #8d745b;
     --ce-toolbar-bg: #0b0b0c;
     --ce-toolbar-text: #f1ece1;
     --ce-toolbar-hover: #d4a64a;

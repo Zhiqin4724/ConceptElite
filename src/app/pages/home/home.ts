@@ -8,6 +8,7 @@ import { Services } from '../../services/services';
 import { StylistsCarouselComponent } from '../../carousel/stylist-carousel';
 import { InstagramPicturesComponent } from '../../instagram-pictures/instagram-pictures';
 import { InstagramVideosComponent } from '../../instagram-videos/instagram-videos';
+import { HeroComponent } from '../../hero/hero';
 
 @Component({
   selector: 'app-home',
@@ -22,10 +23,11 @@ import { InstagramVideosComponent } from '../../instagram-videos/instagram-video
     StylistsCarouselComponent,
     InstagramPicturesComponent,
     InstagramVideosComponent,
+    HeroComponent,
   ],
   template: `
     <main class="main" style="padding-top: 80px;">
-      <!-- <app-main></app-main> -->
+      <app-hero></app-hero>
       <app-about-us id="about-us"></app-about-us>
       <app-services id="services"></app-services>
       <app-stylists-carousel></app-stylists-carousel>

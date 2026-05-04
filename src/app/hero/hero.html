@@ -1,0 +1,22 @@
+<section
+  class="hero"
+  [class.hero--light]="hero().variant === 'light'"
+  [class.hero--dark]="hero().variant === 'dark'"
+  [style.background-image]="'url(' + hero().backgroundUrl + ')'"
+>
+  <div class="hero__overlay"></div>
+
+  <div class="hero__brand">
+    <img src="assets/CE_LOGO/C_LOGO.png" alt="" class="hero__brand-icon" />
+    <img src="assets/CE_LOGO/CE_TITLE.png" alt="Concept Élite" class="hero__brand-title" />
+  </div>
+
+  <div class="hero__content">
+    <h1 class="hero__title">
+      {{ hero().title }}
+      <span class="hero__title-highlight" *ngIf="hero().highlight">{{ hero().highlight }}.</span>
+    </h1>
+    <p class="hero__subtitle">{{ hero().subtitle }}</p>
+    <button class="hero__cta" type="button">{{ hero().cta }}</button>
+  </div>
+</section>
