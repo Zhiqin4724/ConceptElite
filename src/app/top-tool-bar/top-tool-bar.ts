@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy, inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
+import { ThemeService } from '../../service/theme.service';
 
 interface NavLink {
   label: string;
   fragment: string;
   route?: string;
+  action?: 'toggle-theme';
 }
 
 const SHOP_LINK: NavLink = { label: 'SHOP', fragment: '', route: '/shop' };
@@ -42,10 +44,24 @@ export class TopToolBar implements OnInit, OnDestroy {
   isHidden = false;
   navLinks: NavLink[] = [];
 
+  private readonly theme = inject(ThemeService);
+
   private lastScrollY = 0;
   private routerSub!: Subscription;
 
   constructor(private router: Router) {}
+
+  /** Label shown for the theme switcher; reflects the *target* mode. */
+  get themeToggleLabel(): string {
+    return this.theme.mode() === 'coiffure' ? 'BARBER' : 'COIFFURE';
+  }
+
+  private buildLinks(base: NavLink[]): NavLink[] {
+    return [
+      ...base,
+      { label: this.themeToggleLabel, fragment: '', action: 'toggle-theme' },
+    ];
+  }
 
   ngOnInit() {
     // Use '/' as fallback if url is empty on first load
@@ -66,13 +82,16 @@ export class TopToolBar implements OnInit, OnDestroy {
   private updateNavLinks(url: string) {
     const path = url.split('?')[0].split('#')[0];
 
+    let base: NavLink[];
     if (path === '/') {
-      this.navLinks = NAV_CONFIG['/'];
+      base = NAV_CONFIG['/'];
     } else if (path.startsWith('/stylists/')) {
-      this.navLinks = NAV_CONFIG['/stylists'];
+      base = NAV_CONFIG['/stylists'];
     } else {
-      this.navLinks = DEFAULT_NAV;
+      base = DEFAULT_NAV;
     }
+
+    this.navLinks = this.buildLinks(base);
   }
 
   goHome() {
@@ -95,6 +114,13 @@ export class TopToolBar implements OnInit, OnDestroy {
     // Backwards-compat: callers may still pass a raw fragment string.
     const target: NavLink =
       typeof link === 'string' ? { label: '', fragment: link } : link;
+
+    if (target.action === 'toggle-theme') {
+      this.theme.toggle();
+      // Refresh nav labels (and re-render content that depends on the mode).
+      this.updateNavLinks(this.router.url || '/');
+      return;
+    }
 
     if (target.route) {
       this.router.navigate([target.route]);

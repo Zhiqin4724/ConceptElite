@@ -48,6 +48,11 @@ export class InstagramPicturesComponent implements OnInit {
     });
     
     this.currentSlide = this.getSlice(0);
+
+    // Pre-select the first picture so the main display isn't empty on load.
+    if (this.pictures.length > 0) {
+      this.selectedPicture = this.pictures[0];
+    }
   }
 
   get canGoPrev(): boolean {

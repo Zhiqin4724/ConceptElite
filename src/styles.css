@@ -5,3 +5,113 @@ html {
     scroll-behavior: smooth;
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* ---------- Theme tokens ---------- */
+:root,
+html.theme-coiffure {
+    --ce-bg: #ffffff;
+    --ce-surface: #f4efe7;
+    --ce-text: #121212;
+    --ce-muted: #555555;
+    --ce-accent: #8c1e1b;       /* burgundy */
+    --ce-accent-soft: #e7cd78;  /* gold */
+    --ce-toolbar-bg: #f4efe7;
+    --ce-toolbar-text: #121212;
+    --ce-toolbar-hover: #8c1e1b;
+    --ce-card-bg: #ffffff;
+    --ce-card-border: #e0e0e0;
+}
+
+html.theme-barber {
+    --ce-bg: #0f0f10;
+    --ce-surface: #17181b;
+    --ce-text: #f1ece1;
+    --ce-muted: #b3aea3;
+    --ce-accent: #d4a64a;        /* warm gold */
+    --ce-accent-soft: #6b4f1d;
+    --ce-toolbar-bg: #0b0b0c;
+    --ce-toolbar-text: #f1ece1;
+    --ce-toolbar-hover: #d4a64a;
+    --ce-card-bg: #1c1d20;
+    --ce-card-border: #2a2b2f;
+}
+
+html.theme-barber body {
+    background: var(--ce-bg);
+    color: var(--ce-text);
+}
+
+/* Toolbar overrides for the barber theme */
+html.theme-barber .top-tool-bar {
+    background: var(--ce-toolbar-bg) !important;
+    color: var(--ce-toolbar-text) !important;
+}
+
+html.theme-barber .top-tool-bar .top-nav a,
+html.theme-barber .inline-nav a {
+    color: var(--ce-toolbar-text) !important;
+}
+
+html.theme-barber .top-tool-bar .top-nav a:hover,
+html.theme-barber .inline-nav a:hover {
+    color: var(--ce-toolbar-hover) !important;
+}
+
+html.theme-barber .dropdown-nav {
+    background: #1a1b1e !important;
+    color: var(--ce-toolbar-text) !important;
+}
+
+html.theme-barber .dropdown-nav a {
+    color: var(--ce-toolbar-text) !important;
+}
+
+/* Card / panel overrides for barber */
+html.theme-barber .services-card-front-content {
+    background-color: #1c1d20 !important;
+    color: var(--ce-text) !important;
+}
+html.theme-barber .services-card-back-content {
+    background-color: #121315 !important;
+    color: var(--ce-text) !important;
+}
+html.theme-barber .services-card-img {
+    background-color: var(--ce-accent-soft) !important;
+}
+html.theme-barber .list-panel {
+    background-color: var(--ce-surface) !important;
+    border-left-color: var(--ce-card-border) !important;
+    color: var(--ce-text);
+}
+html.theme-barber .address-list li {
+    background-color: var(--ce-card-bg) !important;
+    border-color: var(--ce-card-border) !important;
+    color: var(--ce-text);
+}
+html.theme-barber .address-list li:hover {
+    background-color: #24252a !important;
+    border-color: var(--ce-accent) !important;
+}
+html.theme-barber .address-list li.highlighted {
+    background-color: #2a230f !important;
+    border-color: var(--ce-accent) !important;
+}
+html.theme-barber .address-list p {
+    color: var(--ce-muted) !important;
+}
+
+.theme-toggle {
+    color: var(--ce-accent) !important;
+    font-weight: 800 !important;
+}
+
+/* Brand logos must always sit on a light background, otherwise the
+   white/transparent brand marks disappear in the barber dark theme. */
+app-brand-feature {
+    display: block;
+    background: #ffffff;
+    padding: 24px 0;
+}
+html.theme-barber app-brand-feature {
+    background: #ffffff !important;
+}

@@ -6,14 +6,20 @@
 
 <!-- Inline nav (desktop) -->
 <nav class="top-nav inline-nav">
-<a *ngFor="let link of navLinks" (click)="navigateTo(link)" style="cursor: pointer;">
+<a *ngFor="let link of navLinks"
+   (click)="navigateTo(link)"
+   [class.theme-toggle]="link.action === 'toggle-theme'"
+   style="cursor: pointer;">
     {{ link.label }}
 </a>
 </nav>
 
 <!-- Dropdown nav (mobile) -->
 <nav class="top-nav dropdown-nav" [class.open]="isMenuOpen" (click)="$event.stopPropagation()">
-    <a *ngFor="let link of navLinks" (click)="navigateTo(link)" style="cursor: pointer;">
+    <a *ngFor="let link of navLinks"
+       (click)="navigateTo(link)"
+       [class.theme-toggle]="link.action === 'toggle-theme'"
+       style="cursor: pointer;">
         {{ link.label }}
     </a>
 </nav>

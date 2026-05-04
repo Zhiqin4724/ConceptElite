@@ -1,118 +1,100 @@
 <div class="services-component">
-    <div class="services-card-component">
-        <div class="services-column">
-            <div class="services-card-img">
-                <div class="services-card-front-content">
-                    <div class="services-card-picture">
-                        <img [src]="services[0].logo" [alt]="services[0].title + ' icon'" />
-                    </div>
-                    <div class="services-card-title">{{ services[0].title }}</div>
-                </div>
-
-                <div class="services-card-back-content">
-                    <div class="services-card-details">
-                        <div class="services-list-choices">
-                            <div class="services-list-choices-title">Haircut</div>
-                            <div class="services-list-choices-detail">Women</div>
-                            <div class="services-list-choices-detail">Men</div>
-                            <div class="services-list-choices-detail">Boys(0 - 11 years old)</div>
-                            <div class="services-list-choices-detail">Girls(0 - 11 years old)</div>
-                        </div>
-                        <div class="services-list-prices">
-                            <div class="services-list-choices-title">Price</div>
-                            <div class="services-list-choices-detail">36.00$</div>
-                            <div class="services-list-choices-detail">27.83$</div>
-                            <div class="services-list-choices-detail">23.00$</div>
-                            <div class="services-list-choices-detail">26.00$</div>
-                        </div>
-                    </div>
-                </div>
+  <div
+    class="services-card-component"
+    [class.services-single]="isSingleService()"
+  >
+    <ng-container *ngIf="!isSingleService(); else singleService">
+      <div class="services-column">
+        <div class="services-card-img" *ngFor="let service of services().slice(0, 2)">
+          <div class="services-card-front-content">
+            <div class="services-card-picture">
+              <img [src]="service.logo" [alt]="service.title + ' icon'" />
             </div>
-            <div class="services-card-img">
-                <div class="services-card-front-content">
-                    <div class="services-card-picture">
-                        <img [src]="services[1].logo" [alt]="services[1].title + ' icon'" />
-                    </div>
-                    <div class="services-card-title">{{ services[1].title }}</div>
-                </div>
+            <div class="services-card-title">{{ service.title }}</div>
+          </div>
 
-                <div class="services-card-back-content">
-                    <div class="services-card-details">
-                        <div class="services-list-choices">
-                            <div class="services-list-choices-title">Haircut</div>
-                            <div class="services-list-choices-detail">Women</div>
-                            <div class="services-list-choices-detail">Men</div>
-                            <div class="services-list-choices-detail">Boys(0 - 11 years old)</div>
-                            <div class="services-list-choices-detail">Girls(0 - 11 years old)</div>
-                        </div>
-                        <div class="services-list-prices">
-                            <div class="services-list-choices-title">Price</div>
-                            <div class="services-list-choices-detail">36.00$</div>
-                            <div class="services-list-choices-detail">27.83$</div>
-                            <div class="services-list-choices-detail">23.00$</div>
-                            <div class="services-list-choices-detail">26.00$</div>
-                        </div>
-                    </div>
-                </div>
+          <div class="services-card-back-content">
+            <div class="services-card-details">
+              <div class="services-list-choices">
+                <div class="services-list-choices-title">Haircut</div>
+                <div class="services-list-choices-detail">Women</div>
+                <div class="services-list-choices-detail">Men</div>
+                <div class="services-list-choices-detail">Boys(0 - 11 years old)</div>
+                <div class="services-list-choices-detail">Girls(0 - 11 years old)</div>
+              </div>
+              <div class="services-list-prices">
+                <div class="services-list-choices-title">Price</div>
+                <div class="services-list-choices-detail">36.00$</div>
+                <div class="services-list-choices-detail">27.83$</div>
+                <div class="services-list-choices-detail">23.00$</div>
+                <div class="services-list-choices-detail">26.00$</div>
+              </div>
             </div>
+          </div>
         </div>
-        <div class="services-column">
-            <div class="services-card-img">
-                <div class="services-card-front-content">
-                    <div class="services-card-picture">
-                        <img [src]="services[2].logo" [alt]="services[2].title + ' icon'" />
-                    </div>
-                    <div class="services-card-title">{{ services[2].title }}</div>
-                </div>
+      </div>
 
-                <div class="services-card-back-content">
-                    <div class="services-card-details">
-                        <div class="services-list-choices">
-                            <div class="services-list-choices-title">Haircut</div>
-                            <div class="services-list-choices-detail">Women</div>
-                            <div class="services-list-choices-detail">Men</div>
-                            <div class="services-list-choices-detail">Boys(0 - 11 years old)</div>
-                            <div class="services-list-choices-detail">Girls(0 - 11 years old)</div>
-                        </div>
-                        <div class="services-list-prices">
-                            <div class="services-list-choices-title">Price</div>
-                            <div class="services-list-choices-detail">36.00$</div>
-                            <div class="services-list-choices-detail">27.83$</div>
-                            <div class="services-list-choices-detail">23.00$</div>
-                            <div class="services-list-choices-detail">26.00$</div>
-                        </div>
-                    </div>
-                </div>
+      <div class="services-column" *ngIf="services().length > 2">
+        <div class="services-card-img" *ngFor="let service of services().slice(2, 4)">
+          <div class="services-card-front-content">
+            <div class="services-card-picture">
+              <img [src]="service.logo" [alt]="service.title + ' icon'" />
             </div>
-            <div class="services-card-img">
-                <div class="services-card-front-content">
-                    <div class="services-card-picture">
-                        <img [src]="services[3].logo" [alt]="services[3].title + ' icon'" />
-                    </div>
-                    <div class="services-card-title">{{ services[3].title }}</div>
-                </div>
+            <div class="services-card-title">{{ service.title }}</div>
+          </div>
 
-                <div class="services-card-back-content">
-                    <div class="services-card-details">
-                        <div class="services-list-choices">
-                            <div class="services-list-choices-title">Haircut</div>
-                            <div class="services-list-choices-detail">Women</div>
-                            <div class="services-list-choices-detail">Men</div>
-                            <div class="services-list-choices-detail">Boys(0 - 11 years old)</div>
-                            <div class="services-list-choices-detail">Girls(0 - 11 years old)</div>
-                        </div>
-                        <div class="services-list-prices">
-                            <div class="services-list-choices-title">Price</div>
-                            <div class="services-list-choices-detail">36.00$</div>
-                            <div class="services-list-choices-detail">27.83$</div>
-                            <div class="services-list-choices-detail">23.00$</div>
-                            <div class="services-list-choices-detail">26.00$</div>
-                        </div>
-                    </div>
-                </div>
+          <div class="services-card-back-content">
+            <div class="services-card-details">
+              <div class="services-list-choices">
+                <div class="services-list-choices-title">Haircut</div>
+                <div class="services-list-choices-detail">Women</div>
+                <div class="services-list-choices-detail">Men</div>
+                <div class="services-list-choices-detail">Boys(0 - 11 years old)</div>
+                <div class="services-list-choices-detail">Girls(0 - 11 years old)</div>
+              </div>
+              <div class="services-list-prices">
+                <div class="services-list-choices-title">Price</div>
+                <div class="services-list-choices-detail">36.00$</div>
+                <div class="services-list-choices-detail">27.83$</div>
+                <div class="services-list-choices-detail">23.00$</div>
+                <div class="services-list-choices-detail">26.00$</div>
+              </div>
             </div>
-
+          </div>
         </div>
+      </div>
+    </ng-container>
 
-    </div>
+    <ng-template #singleService>
+      <div class="services-column services-column--single">
+        <div class="services-card-img services-card-img--single">
+          <div class="services-card-front-content">
+            <div class="services-card-picture">
+              <img [src]="services()[0].logo" [alt]="services()[0].title + ' icon'" />
+            </div>
+            <div class="services-card-title">{{ services()[0].title }}</div>
+          </div>
+
+          <div class="services-card-back-content">
+            <div class="services-card-details">
+              <div class="services-list-choices">
+                <div class="services-list-choices-title">Barber Cut</div>
+                <div class="services-list-choices-detail">Classic Cut</div>
+                <div class="services-list-choices-detail">Skin Fade</div>
+                <div class="services-list-choices-detail">Beard Trim</div>
+                <div class="services-list-choices-detail">Hot Towel Shave</div>
+              </div>
+              <div class="services-list-prices">
+                <div class="services-list-choices-title">Price</div>
+                <div class="services-list-choices-detail">30.00$</div>
+                <div class="services-list-choices-detail">35.00$</div>
+                <div class="services-list-choices-detail">15.00$</div>
+                <div class="services-list-choices-detail">25.00$</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
 </div>

@@ -93,3 +93,12 @@
 .services-card-img:nth-of-type(2):hover .services-card-front-content {
   transform: translateX(100%); /* Slides the front content completely right */
 }
+
+.services-column--single {
+  justify-content: center;
+}
+
+.services-card-img--single {
+  width: 60%;
+  max-width: 720px;
+}

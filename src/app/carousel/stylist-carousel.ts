@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, effect, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate, query, group } from '@angular/animations';
 import { StylistCardComponent } from '../../component/card/stylist-card.component';
 import { StylistService } from '../../service/stylist.service';
 import { Stylist } from '../../model/stylist.model';
+import { ThemeService } from '../../service/theme.service';
 
 @Component({
   selector: 'app-stylists-carousel',
@@ -30,17 +31,41 @@ export class StylistsCarouselComponent implements OnInit {
  
   // Fixed card width: always 1/5 of track minus gaps, never depends on how many cards are showing
  
-  constructor(private stylistService: StylistService) {}
+  private readonly theme = inject(ThemeService);
+
+  constructor(private stylistService: StylistService) {
+    // React to theme changes (coiffure <-> barber) and re-filter.
+    effect(() => {
+      // Read the signal so the effect re-runs on change.
+      this.theme.mode();
+      if (this.allStylists.length) {
+        this.applyFilter();
+      }
+    });
+  }
  
   ngOnInit(): void {
     this.allStylists = this.stylistService.getAll();
     this.applyFilter();
   }
+
+  /** True when a stylist's specialty falls under the barber category. */
+  private isBarber(stylist: Stylist): boolean {
+    return /barber/i.test(stylist.specialty);
+  }
  
   applyFilter(): void {
-    this.filteredStylists = this.selectedLocation
-      ? this.allStylists.filter(s => s.location === this.selectedLocation)
+    const isBarberMode = this.theme.mode() === 'barber';
+
+    let list = isBarberMode
+      ? this.allStylists.filter((s) => this.isBarber(s))
       : [...this.allStylists];
+
+    if (this.selectedLocation) {
+      list = list.filter((s) => s.location === this.selectedLocation);
+    }
+
+    this.filteredStylists = list;
     this.currentIndex = 0;
     this.currentSlide = this.getSlice(0);
     this.nextSlide = [];
