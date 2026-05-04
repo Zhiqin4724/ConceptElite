@@ -1,0 +1,158 @@
+<section class="shop">
+  <header class="shop__header">
+    <div class="shop__title">
+      <h1>Shop</h1>
+      <span class="shop__count" *ngIf="!loading()">
+        {{ filtered().length }} of {{ items().length }} products
+      </span>
+    </div>
+
+    <div class="shop__controls">
+      <mat-form-field appearance="outline" class="shop__search">
+        <mat-icon matPrefix>search</mat-icon>
+        <mat-label>Search products</mat-label>
+        <input
+          matInput
+          type="search"
+          [ngModel]="query()"
+          (ngModelChange)="query.set($event)"
+          placeholder="Name, brand, description..."
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="shop__sort">
+        <mat-label>Sort by</mat-label>
+        <mat-select
+          [ngModel]="sort()"
+          (ngModelChange)="sort.set($event)"
+        >
+          <mat-option value="relevance">Relevance</mat-option>
+          <mat-option value="price-asc">Price: low to high</mat-option>
+          <mat-option value="price-desc">Price: high to low</mat-option>
+          <mat-option value="name-asc">Name: A → Z</mat-option>
+          <mat-option value="name-desc">Name: Z → A</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </header>
+
+  <div class="shop__body">
+    <aside class="shop__facets">
+      <div class="shop__facets-header">
+        <h2>Filters</h2>
+        <button
+          mat-button
+          color="primary"
+          *ngIf="hasActiveFilters()"
+          (click)="clearAll()"
+        >
+          Clear all
+        </button>
+      </div>
+
+      <section class="facet" *ngIf="priceBounds().max > 0">
+        <h3>Max price</h3>
+        <mat-slider
+          [min]="priceBounds().min"
+          [max]="priceBounds().max"
+          step="1"
+          discrete
+        >
+          <input
+            matSliderThumb
+            [value]="priceMax() ?? priceBounds().max"
+            (valueChange)="onPriceChange($event)"
+          />
+        </mat-slider>
+        <div class="facet__price-range">
+          <span>{{ priceBounds().min | currency }}</span>
+          <span>{{ (priceMax() ?? priceBounds().max) | currency }}</span>
+        </div>
+      </section>
+
+      <section class="facet" *ngFor="let facet of facets()">
+        <h3>{{ facet.label }}</h3>
+        <ul class="facet__list">
+          <li *ngFor="let v of facet.values">
+            <mat-checkbox
+              [checked]="v.selected"
+              (change)="toggleFacet(facet.field, v.value)"
+            >
+              <span class="facet__value">{{ v.value }}</span>
+              <span class="facet__count">({{ v.count }})</span>
+            </mat-checkbox>
+          </li>
+          <li class="facet__empty" *ngIf="!facet.values.length">No values</li>
+        </ul>
+      </section>
+    </aside>
+
+    <main class="shop__results">
+      <div class="shop__loading" *ngIf="loading()">
+        <mat-spinner diameter="48"></mat-spinner>
+        <p>Loading catalog…</p>
+      </div>
+
+      <div class="shop__error" *ngIf="error()">
+        <mat-icon>error_outline</mat-icon>
+        <p>{{ error() }}</p>
+      </div>
+
+      <div
+        class="shop__empty"
+        *ngIf="!loading() && !error() && filtered().length === 0"
+      >
+        <mat-icon>inventory_2</mat-icon>
+        <p>No products match your filters.</p>
+      </div>
+
+      <div class="shop__grid">
+        <mat-card
+          class="product-card"
+          *ngFor="let item of filtered(); trackBy: $any('id')"
+        >
+          <div class="product-card__media">
+            <img
+              *ngIf="item.imageUrl"
+              [src]="item.imageUrl"
+              [alt]="item.name"
+              loading="lazy"
+            />
+            <div class="product-card__placeholder" *ngIf="!item.imageUrl">
+              <mat-icon>image</mat-icon>
+            </div>
+            <span class="product-card__badge product-card__badge--sale" *ngIf="item.onSale">
+              Sale
+            </span>
+            <span
+              class="product-card__badge product-card__badge--out"
+              *ngIf="!item.inStock"
+            >
+              Sold out
+            </span>
+          </div>
+          <mat-card-content>
+            <p class="product-card__brand" *ngIf="item.brand">{{ item.brand }}</p>
+            <h3 class="product-card__name">{{ item.name }}</h3>
+            <p class="product-card__price">
+              <ng-container *ngIf="item.onSale && item.salePrice != null; else regular">
+                <span class="product-card__price--sale">
+                  {{ item.salePrice | currency: item.currency }}
+                </span>
+                <span class="product-card__price--strike">
+                  {{ item.price | currency: item.currency }}
+                </span>
+              </ng-container>
+              <ng-template #regular>
+                {{ item.price | currency: item.currency }}
+              </ng-template>
+            </p>
+            <mat-chip-set *ngIf="item.tags.length" class="product-card__tags">
+              <mat-chip *ngFor="let tag of item.tags.slice(0, 3)">{{ tag }}</mat-chip>
+            </mat-chip-set>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </main>
+  </div>
+</section>

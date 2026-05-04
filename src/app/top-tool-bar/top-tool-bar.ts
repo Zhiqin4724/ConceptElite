@@ -6,21 +6,29 @@ import { filter, Subscription } from 'rxjs';
 interface NavLink {
   label: string;
   fragment: string;
+  route?: string;
 }
+
+const SHOP_LINK: NavLink = { label: 'SHOP', fragment: '', route: '/shop' };
 
 const NAV_CONFIG: Record<string, NavLink[]> = {
   '/': [
     { label: 'ABOUT US', fragment: 'about-us' },
     { label: 'SERVICE', fragment: 'services' },
     { label: 'LOCATION', fragment: 'location' },
+    SHOP_LINK,
   ],
   '/stylists': [
     { label: 'HOME', fragment: '' },
     { label: 'BOOKING', fragment: 'booking' },
+    SHOP_LINK,
   ],
 };
 
-const DEFAULT_NAV: NavLink[] = [{ label: 'HOME', fragment: '' }];
+const DEFAULT_NAV: NavLink[] = [
+  { label: 'HOME', fragment: '' },
+  SHOP_LINK,
+];
 
 @Component({
   selector: 'app-top-tool-bar',
@@ -81,8 +89,19 @@ export class TopToolBar implements OnInit, OnDestroy {
     this.isMenuOpen = false;
   }
 
-  navigateTo(fragment: string) {
+  navigateTo(link: NavLink | string) {
     this.closeMenu();
+
+    // Backwards-compat: callers may still pass a raw fragment string.
+    const target: NavLink =
+      typeof link === 'string' ? { label: '', fragment: link } : link;
+
+    if (target.route) {
+      this.router.navigate([target.route]);
+      return;
+    }
+
+    const fragment = target.fragment;
 
     if (!fragment) {
       this.router.navigate(['/']);

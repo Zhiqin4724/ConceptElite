@@ -14,6 +14,11 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'shop',
+    loadComponent: () =>
+      import('./shop/shop').then((m) => m.ShopComponent),
+  },
+  {
     path: '**',
     redirectTo: '',
   },
