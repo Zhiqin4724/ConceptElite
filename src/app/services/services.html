@@ -1,12 +1,8 @@
 <div class="services-component">
   <header class="services-heading">
-    <span class="services-heading__eyebrow">Services &amp; Tarifs</span>
-    <h2 class="services-heading__title">Our Services &amp; Pricing</h2>
-    <p class="services-heading__subtitle">
-      Discover our full range of hair services and transparent pricing — from
-      precision cuts to bespoke color, every experience is crafted by our
-      expert stylists.
-    </p>
+    <span class="services-heading__eyebrow">{{ 'services.eyebrow' | translate }}</span>
+    <h2 class="services-heading__title">{{ 'services.title' | translate }}</h2>
+    <p class="services-heading__subtitle">{{ 'services.subtitle' | translate }}</p>
     <span class="services-heading__divider" aria-hidden="true"></span>
   </header>
 
@@ -20,24 +16,24 @@
       [attr.data-index]="i"
     >
       <div class="bento-tile__cover" [style.background-image]="'url(' + service.image + ')'">
-        <span class="bento-tile__cover-eyebrow">Tarifs</span>
-        <h3 class="bento-tile__cover-title">{{ service.title }}</h3>
-        <span class="bento-tile__cover-hint">Hover to view prices</span>
+        <span class="bento-tile__cover-eyebrow">{{ 'services.tarifs' | translate }}</span>
+        <h3 class="bento-tile__cover-title">{{ 'services.cards.' + service.key + '.title' | translate }}</h3>
+        <span class="bento-tile__cover-hint">{{ 'services.hover' | translate }}</span>
       </div>
 
       <header class="bento-tile__head">
         <div class="bento-tile__icon">
-          <img [src]="service.logo" [alt]="service.title + ' icon'" />
+          <img [src]="service.logo" [alt]="('services.cards.' + service.key + '.title' | translate) + ' icon'" />
         </div>
         <div class="bento-tile__heading">
-          <span class="bento-tile__eyebrow">Tarifs</span>
-          <h3 class="bento-tile__title">{{ service.title }}</h3>
+          <span class="bento-tile__eyebrow">{{ 'services.tarifs' | translate }}</span>
+          <h3 class="bento-tile__title">{{ 'services.cards.' + service.key + '.title' | translate }}</h3>
         </div>
       </header>
 
       <ul class="bento-tile__list">
         <li class="bento-tile__row" *ngFor="let row of service.rows">
-          <span class="bento-tile__label">{{ row.label }}</span>
+          <span class="bento-tile__label">{{ 'services.cards.' + service.key + '.rows.' + row.key | translate }}</span>
           <span class="bento-tile__dots" aria-hidden="true"></span>
           <span class="bento-tile__price">{{ row.price }}</span>
         </li>

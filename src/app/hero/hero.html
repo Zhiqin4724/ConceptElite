@@ -13,10 +13,14 @@
 
   <div class="hero__content">
     <h1 class="hero__title">
-      {{ hero().title }}
-      <span class="hero__title-highlight" *ngIf="hero().highlight">{{ hero().highlight }}.</span>
+      {{ 'hero.' + hero().i18nKey + '.title' | translate }}
+      <span class="hero__title-highlight">
+        {{ 'hero.' + hero().i18nKey + '.highlight' | translate }}.
+      </span>
     </h1>
-    <p class="hero__subtitle">{{ hero().subtitle }}</p>
-    <button class="hero__cta" type="button">{{ hero().cta }}</button>
+    <p class="hero__subtitle">{{ 'hero.' + hero().i18nKey + '.subtitle' | translate }}</p>
+    <button class="hero__cta" type="button">
+      {{ 'hero.' + hero().i18nKey + '.cta' | translate }}
+    </button>
   </div>
 </section>

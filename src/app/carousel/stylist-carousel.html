@@ -2,8 +2,8 @@
 
   <div class="section-header">
     <div class="header-left">
-      <h2 class="section-title">Nos coiffeurs &amp; coiffeuses</h2>
-      <p class="section-subtitle">Une équipe passionnée à votre service</p>
+      <h2 class="section-title">{{ 'stylists.title' | translate }}</h2>
+      <p class="section-subtitle">{{ 'stylists.subtitle' | translate }}</p>
     </div>
 
     <div class="filter-wrapper">
@@ -12,7 +12,7 @@
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
           <circle cx="12" cy="10" r="3"></circle>
         </svg>
-        {{ selectedLocation ?? 'Toutes les villes' }}
+        {{ selectedLocation ?? ('stylists.allCities' | translate) }}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
@@ -20,7 +20,7 @@
 
       <div class="dropdown" *ngIf="dropdownOpen">
         <button class="dropdown-item" [class.active]="selectedLocation === null" (click)="selectLocation(null)">
-          Toutes les villes
+          {{ 'stylists.allCities' | translate }}
         </button>
         <button
           *ngFor="let loc of locations"
@@ -36,7 +36,7 @@
 
   <div class="carousel-wrapper">
 
-    <button class="carousel-btn" (click)="prev()" [disabled]="!canGoPrev" aria-label="Précédent">
+    <button class="carousel-btn" (click)="prev()" [disabled]="!canGoPrev" [attr.aria-label]="'stylists.prev' | translate">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg>
@@ -64,7 +64,7 @@
 
     </div>
 
-    <button class="carousel-btn" (click)="next()" [disabled]="!canGoNext" aria-label="Suivant">
+    <button class="carousel-btn" (click)="next()" [disabled]="!canGoNext" [attr.aria-label]="'stylists.next' | translate">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="9 18 15 12 9 6"></polyline>
       </svg>

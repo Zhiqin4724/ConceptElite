@@ -1,14 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-// import {logo} from '../../assets/icon/woman-hair.png';
+import { TranslateModule } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-footer',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './footer.html',
-  styleUrl: './footer.css'
+  styleUrl: './footer.css',
 })
-
-
-export class Footer {
-
-}
+export class Footer {}

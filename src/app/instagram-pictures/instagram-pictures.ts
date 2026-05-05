@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 import { StylistService } from '../../service/stylist.service';
 
 interface InstagramPicture {
@@ -11,7 +12,7 @@ interface InstagramPicture {
 @Component({
   selector: 'app-instagram-pictures',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './instagram-pictures.html',
   styleUrls: ['./instagram-pictures.css'],
 })

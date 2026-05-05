@@ -1,12 +1,11 @@
 export interface PriceRow {
-  label: string;
+  key: string;
   price: string;
 }
 
 export interface ServiceCard {
+  key: string;
   logo: string;
   image: string;
-  title: string;
-  menuTitle: string;
   rows: PriceRow[];
 }

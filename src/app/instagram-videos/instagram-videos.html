@@ -1,8 +1,8 @@
 <section class="instagram-videos-section">
   <div class="section-header">
     <div class="header-left">
-      <h2 class="section-title">Nos vidéos</h2>
-      <p class="section-subtitle">Suivez-nous sur Instagram pour plus de contenu</p>
+      <h2 class="section-title">{{ 'videos.title' | translate }}</h2>
+      <p class="section-subtitle">{{ 'videos.subtitle' | translate }}</p>
     </div>
   </div>
 
@@ -14,7 +14,7 @@
 
     <!-- Carousel for thumbnails -->
     <div class="carousel-wrapper">
-      <button class="carousel-btn" (click)="prev()" [disabled]="!canGoPrev" aria-label="Précédent">
+      <button class="carousel-btn" (click)="prev()" [disabled]="!canGoPrev" [attr.aria-label]="'stylists.prev' | translate">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <button class="carousel-btn" (click)="next()" [disabled]="!canGoNext" aria-label="Suivant">
+      <button class="carousel-btn" (click)="next()" [disabled]="!canGoNext" [attr.aria-label]="'stylists.next' | translate">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>

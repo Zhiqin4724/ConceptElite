@@ -1,66 +1,62 @@
 {
   "coiffure": [
     {
+      "key": "haircut",
       "logo": "../../assets/icon/haircut.png",
       "image": "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=80",
-      "title": "Haircut",
-      "menuTitle": "Haircut",
       "rows": [
-        { "label": "Women", "price": "36.00$" },
-        { "label": "Men", "price": "27.00$" },
-        { "label": "Boys (0 - 11 years old)", "price": "23.00$" },
-        { "label": "Girls (0 - 11 years old)", "price": "26.00$" }
+        { "key": "women", "price": "36.00$" },
+        { "key": "men", "price": "27.00$" },
+        { "key": "boys", "price": "23.00$" },
+        { "key": "girls", "price": "26.00$" }
       ]
     },
     {
+      "key": "styling",
       "logo": "../../assets/icon/hair-comb.png",
       "image": "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80",
-      "title": "Styling",
-      "menuTitle": "Styling",
       "rows": [
-        { "label": "Blow-dry", "price": "40.00$" },
-        { "label": "Updo", "price": "75.00$" },
-        { "label": "Bridal styling", "price": "120.00$" },
-        { "label": "Hair extensions setup", "price": "95.00$" }
+        { "key": "blowdry", "price": "40.00$" },
+        { "key": "updo", "price": "75.00$" },
+        { "key": "bridal", "price": "120.00$" },
+        { "key": "extensions", "price": "95.00$" }
       ]
     },
     {
+      "key": "coloration",
       "logo": "../../assets/icon/color-palette.png",
       "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80",
-      "title": "Coloration",
-      "menuTitle": "Coloration",
       "rows": [
-        { "label": "Single process", "price": "85.00$" },
-        { "label": "Highlights", "price": "130.00$" },
-        { "label": "Balayage", "price": "180.00$" },
-        { "label": "Color correction", "price": "210.00$" }
+        { "key": "single", "price": "85.00$" },
+        { "key": "highlights", "price": "130.00$" },
+        { "key": "balayage", "price": "180.00$" },
+        { "key": "correction", "price": "210.00$" }
       ]
     },
     {
+      "key": "treatment",
       "logo": "../../assets/icon/massage.png",
       "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80",
-      "title": "Treatment",
-      "menuTitle": "Treatment",
       "rows": [
-        { "label": "Deep conditioning", "price": "45.00$" },
-        { "label": "Keratin smoothing", "price": "160.00$" },
-        { "label": "Scalp massage", "price": "35.00$" },
-        { "label": "Olaplex repair", "price": "55.00$" }
+        { "key": "deep", "price": "45.00$" },
+        { "key": "keratin", "price": "160.00$" },
+        { "key": "scalp", "price": "35.00$" },
+        { "key": "olaplex", "price": "55.00$" }
       ]
     }
   ],
   "barber": [
     {
+      "key": "barberCut",
       "logo": "../../assets/icon/haircut.png",
       "image": "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=1200&q=80",
-      "title": "Barber Cut",
-      "menuTitle": "Barber Cut",
       "rows": [
-        { "label": "Classic Cut", "price": "30.00$" },
-        { "label": "Skin Fade", "price": "35.00$" },
-        { "label": "Beard Trim", "price": "15.00$" },
-        { "label": "Hot Towel Shave", "price": "25.00$" }
+        { "key": "classic", "price": "30.00$" },
+        { "key": "fade", "price": "35.00$" },
+        { "key": "beard", "price": "15.00$" },
+        { "key": "shave", "price": "25.00$" }
       ]
     }
   ]
 }
+

@@ -5,7 +5,7 @@
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="15 18 9 12 15 6"></polyline>
   </svg>
-  Retour
+  {{ 'stylists.detail.back' | translate }}
 </button>
 
   <!-- Profile Section -->
@@ -50,7 +50,7 @@
   <!-- Portfolio Section -->
   <div class="portfolio-section">
     <div class="portfolio-header">
-      <span class="portfolio-label">Réalisations récentes</span>
+      <span class="portfolio-label">{{ 'stylists.detail.portfolioLabel' | translate }}</span>
     </div>
 
     <div class="portfolio-grid" *ngIf="paginatedImages.length; else noImages">
@@ -60,7 +60,7 @@
     </div>
 
     <ng-template #noImages>
-      <p class="no-images">Aucune réalisation disponible pour le moment.</p>
+      <p class="no-images">{{ 'stylists.detail.noImages' | translate }}</p>
     </ng-template>
 
     <!-- Pagination — always shown -->
@@ -76,7 +76,7 @@
 
 <ng-template #notFound>
   <div class="not-found">
-    <p>Coiffeur introuvable.</p>
-    <a routerLink="/">← Retour</a>
+    <p>{{ 'stylists.detail.notFound' | translate }}</p>
+    <a routerLink="/">{{ 'stylists.detail.backHome' | translate }}</a>
   </div>
 </ng-template>

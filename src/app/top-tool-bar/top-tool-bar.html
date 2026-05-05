@@ -9,8 +9,12 @@
 <a *ngFor="let link of navLinks"
    (click)="navigateTo(link)"
    [class.theme-toggle]="link.action === 'toggle-theme'"
+   [class.lang-toggle]="link.action === 'toggle-lang'"
    style="cursor: pointer;">
-    {{ link.label }}
+    <ng-container *ngIf="link.action === 'toggle-lang'; else translatedLabelInline">
+        {{ languageToggleLabel }}
+    </ng-container>
+    <ng-template #translatedLabelInline>{{ link.labelKey | translate }}</ng-template>
 </a>
 </nav>
 
@@ -19,8 +23,12 @@
     <a *ngFor="let link of navLinks"
        (click)="navigateTo(link)"
        [class.theme-toggle]="link.action === 'toggle-theme'"
+       [class.lang-toggle]="link.action === 'toggle-lang'"
        style="cursor: pointer;">
-        {{ link.label }}
+        <ng-container *ngIf="link.action === 'toggle-lang'; else translatedLabelDropdown">
+            {{ languageToggleLabel }}
+        </ng-container>
+        <ng-template #translatedLabelDropdown>{{ link.labelKey | translate }}</ng-template>
     </a>
 </nav>
 

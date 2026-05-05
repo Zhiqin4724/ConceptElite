@@ -6,15 +6,27 @@
         [class.about-us__row--reverse]="i % 2 === 1"
       >
         <div class="about-us__media">
-          <img [src]="block.image" [alt]="block.imageAlt" loading="lazy" />
+          <img
+            [src]="block.image"
+            [alt]="'about.' + themeKey() + '.' + block.i18nKey + '.imageAlt' | translate"
+            loading="lazy"
+          />
         </div>
 
         <div class="about-us__content">
-          <div class="about-us__eyebrow">{{ block.eyebrow }}</div>
-          <h2 class="about-us__title">{{ block.title }}</h2>
-          <p class="about-us__body">{{ block.body }}</p>
-          <p class="about-us__welcome" *ngIf="block.welcome">
-            <strong>{{ block.welcome }}</strong>
+          <div class="about-us__eyebrow">
+            {{ 'about.' + themeKey() + '.' + block.i18nKey + '.eyebrow' | translate }}
+          </div>
+          <h2 class="about-us__title">
+            {{ 'about.' + themeKey() + '.' + block.i18nKey + '.title' | translate }}
+          </h2>
+          <p class="about-us__body">
+            {{ 'about.' + themeKey() + '.' + block.i18nKey + '.body' | translate }}
+          </p>
+          <p class="about-us__welcome" *ngIf="block.hasWelcome">
+            <strong>
+              {{ 'about.' + themeKey() + '.' + block.i18nKey + '.welcome' | translate }}
+            </strong>
           </p>
           <button
             *ngIf="block.cta"
@@ -22,7 +34,7 @@
             class="about-us__cta"
             (click)="handleCta(block.cta)"
           >
-            {{ block.cta.label }}
+            {{ 'about.' + themeKey() + '.' + block.i18nKey + '.cta' | translate }}
           </button>
         </div>
       </article>

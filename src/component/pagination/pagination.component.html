@@ -5,7 +5,7 @@
     class="page-btn arrow"
     [disabled]="currentPage === 1"
     (click)="goTo(currentPage - 1)"
-    aria-label="Page précédente"
+    [attr.aria-label]="'stylists.detail.prevPage' | translate"
   >‹</button>
 
   <!-- Page buttons -->
@@ -25,7 +25,7 @@
     class="page-btn arrow"
     [disabled]="currentPage === totalPages"
     (click)="goTo(currentPage + 1)"
-    aria-label="Page suivante"
+    [attr.aria-label]="'stylists.detail.nextPage' | translate"
   >›</button>
 
 </div>

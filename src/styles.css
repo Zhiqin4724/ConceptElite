@@ -166,6 +166,41 @@ html.theme-barber .top-nav a.theme-toggle:focus {
     padding: 0.65rem 1.4rem !important;
 }
 
+/* ---- Language toggle pill ----
+   Smaller, neutral pill that sits before the theme switcher. */
+.top-nav a.lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.4rem;
+    padding: 0.4rem 0.7rem !important;
+    margin-left: 0.4rem;
+    border-radius: 999px;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase;
+    line-height: 1;
+    background: transparent !important;
+    border: 1px solid var(--ce-toolbar-text, #f4f4f5) !important;
+    color: var(--ce-toolbar-text, #f4f4f5) !important;
+    transition: background-color 0.2s ease, color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.top-nav a.lang-toggle:hover,
+.top-nav a.lang-toggle:focus {
+    background: var(--ce-toolbar-text, #f4f4f5) !important;
+    color: var(--ce-toolbar-bg, #1a1a1d) !important;
+    transform: translateY(-1px);
+}
+
+.dropdown-nav a.lang-toggle {
+    margin-left: 0;
+    margin-top: 0.4rem;
+    padding: 0.5rem 0.9rem !important;
+}
+
 /* ---- Map / location list ---- */
 html.theme-coiffure .list-panel {
     background-color: var(--ce-surface) !important;

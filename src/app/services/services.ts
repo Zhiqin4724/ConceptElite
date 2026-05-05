@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from '../../service/theme.service';
 import { ServicesService } from '../../service/services.service';
 import { ServiceCard } from '../../model/service.model';
 
 @Component({
   selector: 'app-services',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './services.html',
   styleUrl: './services.css',
 })

@@ -1,35 +1,44 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit, OnDestroy, inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { filter, Subscription } from 'rxjs';
 import { ThemeService, ThemeMode } from '../../service/theme.service';
+import { LanguageService } from '../../service/language.service';
 
 interface NavLink {
-  label: string;
+  /** Translation key under `nav.*` */
+  labelKey: string;
   fragment: string;
   route?: string;
-  action?: 'toggle-theme';
+  action?: 'toggle-theme' | 'toggle-lang';
 }
 
-const SHOP_LINK: NavLink = { label: 'SHOP', fragment: '', route: '/shop' };
+const SHOP_LINK: NavLink = { labelKey: 'nav.shop', fragment: '', route: '/shop' };
 
 const HOME_NAV: NavLink[] = [
-  { label: 'ABOUT US', fragment: 'about-us' },
-  { label: 'SERVICE', fragment: 'services' },
-  { label: 'LOCATION', fragment: 'location' },
+  { labelKey: 'nav.aboutUs', fragment: 'about-us' },
+  { labelKey: 'nav.service', fragment: 'services' },
+  { labelKey: 'nav.location', fragment: 'location' },
   SHOP_LINK,
 ];
 
 const STYLIST_NAV: NavLink[] = [
-  { label: 'HOME', fragment: '' },
-  { label: 'BOOKING', fragment: 'booking' },
+  { labelKey: 'nav.home', fragment: '' },
+  { labelKey: 'nav.booking', fragment: 'booking' },
   SHOP_LINK,
 ];
 
 const DEFAULT_NAV: NavLink[] = [
-  { label: 'HOME', fragment: '' },
+  { labelKey: 'nav.home', fragment: '' },
   SHOP_LINK,
 ];
+
+const LANG_TOGGLE: NavLink = {
+  labelKey: 'language.label',
+  fragment: '',
+  action: 'toggle-lang',
+};
 
 /** Routes that are considered "home" (one per theme). */
 const HOME_PATHS = new Set<string>(['/', '/coiffure', '/le-barbier']);
@@ -42,7 +51,7 @@ const THEME_PATHS: Record<ThemeMode, string> = {
 @Component({
   selector: 'app-top-tool-bar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './top-tool-bar.html',
   styleUrls: ['./top-tool-bar.css'],
 })
@@ -56,21 +65,30 @@ export class TopToolBar implements OnInit, OnDestroy {
   private currentTheme: ThemeMode = 'coiffure';
 
   private readonly theme = inject(ThemeService);
+  private readonly language = inject(LanguageService);
 
   private lastScrollY = 0;
   private routerSub!: Subscription;
 
   constructor(private router: Router) {}
 
-  /** Label shown for the theme switcher; reflects the *target* mode. */
-  get themeToggleLabel(): string {
-    return this.currentTheme === 'coiffure' ? 'BARBER' : 'COIFFURE';
+  /** Translation key for the *target* theme. */
+  get themeToggleKey(): string {
+    return this.currentTheme === 'coiffure'
+      ? 'nav.switchToBarber'
+      : 'nav.switchToCoiffure';
+  }
+
+  /** Visible label on the language pill — shows the *other* language. */
+  get languageToggleLabel(): string {
+    return this.language.lang() === 'fr' ? 'EN' : 'FR';
   }
 
   private buildLinks(base: NavLink[]): NavLink[] {
     return [
       ...base,
-      { label: this.themeToggleLabel, fragment: '', action: 'toggle-theme' },
+      LANG_TOGGLE,
+      { labelKey: this.themeToggleKey, fragment: '', action: 'toggle-theme' },
     ];
   }
 
@@ -141,7 +159,16 @@ export class TopToolBar implements OnInit, OnDestroy {
 
     // Backwards-compat: callers may still pass a raw fragment string.
     const target: NavLink =
-      typeof link === 'string' ? { label: '', fragment: link } : link;
+      typeof link === 'string'
+        ? { labelKey: '', fragment: link }
+        : link;
+
+    if (target.action === 'toggle-lang') {
+      this.language.toggle();
+      // Refresh nav so the theme-toggle label re-renders for the new lang.
+      this.updateNavLinks(this.router.url || '/');
+      return;
+    }
 
     if (target.action === 'toggle-theme') {
       // Navigate to the other theme's URL — the home component's SEO service

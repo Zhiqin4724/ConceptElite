@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, effect, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate, query, group } from '@angular/animations';
+import { TranslateModule } from '@ngx-translate/core';
 import { StylistCardComponent } from '../../component/card/stylist-card.component';
 import { StylistService } from '../../service/stylist.service';
 import { Stylist } from '../../model/stylist.model';
@@ -8,7 +9,7 @@ import { ThemeService } from '../../service/theme.service';
 
 @Component({
   selector: 'app-stylists-carousel',
-  imports: [CommonModule, StylistCardComponent],
+  imports: [CommonModule, TranslateModule, StylistCardComponent],
   templateUrl: './stylist-carousel.html',
   styleUrls: ['./stylist-carousel.css'],
 })
