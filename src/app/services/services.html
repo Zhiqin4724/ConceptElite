@@ -1,60 +1,47 @@
 <div class="services-component">
+  <header class="services-heading">
+    <span class="services-heading__eyebrow">Services &amp; Tarifs</span>
+    <h2 class="services-heading__title">Our Services &amp; Pricing</h2>
+    <p class="services-heading__subtitle">
+      Discover our full range of hair services and transparent pricing — from
+      precision cuts to bespoke color, every experience is crafted by our
+      expert stylists.
+    </p>
+    <span class="services-heading__divider" aria-hidden="true"></span>
+  </header>
+
   <div
-    class="services-card-component"
-    [class.services-single]="isSingleService()"
+    class="services-bento"
+    [class.services-bento--single]="isSingleService()"
   >
-    <ng-container *ngIf="!isSingleService(); else singleService">
-      <div class="services-column">
-        <ng-container *ngFor="let service of services().slice(0, 2)">
-          <ng-container *ngTemplateOutlet="card; context: { $implicit: service }"></ng-container>
-        </ng-container>
+    <article
+      class="bento-tile"
+      *ngFor="let service of services(); let i = index"
+      [attr.data-index]="i"
+    >
+      <div class="bento-tile__cover" [style.background-image]="'url(' + service.image + ')'">
+        <span class="bento-tile__cover-eyebrow">Tarifs</span>
+        <h3 class="bento-tile__cover-title">{{ service.title }}</h3>
+        <span class="bento-tile__cover-hint">Hover to view prices</span>
       </div>
 
-      <div class="services-column" *ngIf="services().length > 2">
-        <ng-container *ngFor="let service of services().slice(2, 4)">
-          <ng-container *ngTemplateOutlet="card; context: { $implicit: service }"></ng-container>
-        </ng-container>
-      </div>
-    </ng-container>
+      <header class="bento-tile__head">
+        <div class="bento-tile__icon">
+          <img [src]="service.logo" [alt]="service.title + ' icon'" />
+        </div>
+        <div class="bento-tile__heading">
+          <span class="bento-tile__eyebrow">Tarifs</span>
+          <h3 class="bento-tile__title">{{ service.title }}</h3>
+        </div>
+      </header>
 
-    <ng-template #singleService>
-      <div class="services-column services-column--single">
-        <ng-container *ngTemplateOutlet="card; context: { $implicit: services()[0], single: true }"></ng-container>
-      </div>
-    </ng-template>
+      <ul class="bento-tile__list">
+        <li class="bento-tile__row" *ngFor="let row of service.rows">
+          <span class="bento-tile__label">{{ row.label }}</span>
+          <span class="bento-tile__dots" aria-hidden="true"></span>
+          <span class="bento-tile__price">{{ row.price }}</span>
+        </li>
+      </ul>
+    </article>
   </div>
 </div>
-
-<ng-template #card let-service let-single="single">
-  <div class="services-card-img" [class.services-card-img--single]="single">
-    <div class="services-card-front-content">
-      <div class="services-card-picture">
-        <img [src]="service.logo" [alt]="service.title + ' icon'" />
-      </div>
-      <div class="services-card-title">{{ service.title }}</div>
-    </div>
-
-    <div class="services-card-back-content">
-      <div class="services-card-details">
-        <div class="services-list-choices">
-          <div class="services-list-choices-title">{{ service.menuTitle }}</div>
-          <div
-            class="services-list-choices-detail"
-            *ngFor="let row of service.rows"
-          >
-            {{ row.label }}
-          </div>
-        </div>
-        <div class="services-list-prices">
-          <div class="services-list-choices-title">Price</div>
-          <div
-            class="services-list-choices-detail"
-            *ngFor="let row of service.rows"
-          >
-            {{ row.price }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-template>

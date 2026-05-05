@@ -20,7 +20,7 @@
             *ngIf="block.cta"
             type="button"
             class="about-us__cta"
-            (click)="scrollTo(block.cta.targetId)"
+            (click)="handleCta(block.cta)"
           >
             {{ block.cta.label }}
           </button>

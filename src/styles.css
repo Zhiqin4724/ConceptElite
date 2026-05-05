@@ -110,39 +110,60 @@ html.theme-barber body {
     letter-spacing: 0.12em !important;
 }
 
-/* ---- Services cards ---- */
-html.theme-coiffure .services-card-front-content {
-    background-color: var(--ce-card-bg) !important;
-    color: var(--ce-text) !important;
-}
-html.theme-coiffure .services-card-back-content {
-    background-color: var(--ce-surface) !important;
-    color: var(--ce-text) !important;
-}
-html.theme-coiffure .services-card-img {
-    background-color: var(--ce-accent) !important;
-}
-html.theme-coiffure .services-list-choices-title {
-    color: var(--ce-accent) !important;
+/* Pill-button treatment for the theme switcher in the top toolbar.
+   Sits on a contrasting background so it reads as a CTA, not a nav link. */
+.top-nav a.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.1rem !important;
+    margin-left: 0.6rem;
+    border-radius: 999px;
+    font-size: 0.82rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase;
+    line-height: 1;
+    transition: background-color 0.2s ease, color 0.2s ease,
+        box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-html.theme-barber .services-card-front-content {
-    background-color: #1f2024 !important;
-    color: var(--ce-text) !important;
-    border: 1px solid var(--ce-card-border);
+.top-nav a.theme-toggle:hover,
+.top-nav a.theme-toggle:focus {
+    transform: translateY(-1px);
 }
-html.theme-barber .services-card-back-content {
-    background-color: #1f2024 !important;
-    color: var(--ce-text) !important;
-}
-html.theme-barber .services-card-img {
-    background-color: #2a2b2f !important;
-}
-html.theme-barber .services-list-choices-title {
+
+/* Coiffure (light toolbar): burgundy pill */
+html.theme-coiffure .top-nav a.theme-toggle {
+    background: #8c1e1b !important;
     color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(140, 30, 27, 0.28);
 }
-html.theme-barber .services-list-choices-detail {
+html.theme-coiffure .top-nav a.theme-toggle:hover,
+html.theme-coiffure .top-nav a.theme-toggle:focus {
+    background: #4f1d1a !important;
     color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(140, 30, 27, 0.4);
+}
+
+/* Barber (dark toolbar): gold pill */
+html.theme-barber .top-nav a.theme-toggle {
+    background: var(--ce-accent-gold, #d4a64a) !important;
+    color: #0c0c0d !important;
+    box-shadow: 0 2px 8px rgba(212, 166, 74, 0.35);
+}
+html.theme-barber .top-nav a.theme-toggle:hover,
+html.theme-barber .top-nav a.theme-toggle:focus {
+    background: #e8bb5a !important;
+    color: #0c0c0d !important;
+    box-shadow: 0 4px 14px rgba(212, 166, 74, 0.55);
+}
+
+/* In the mobile dropdown, give it a touch more breathing room */
+.dropdown-nav a.theme-toggle {
+    margin-left: 0;
+    margin-top: 0.4rem;
+    padding: 0.65rem 1.4rem !important;
 }
 
 /* ---- Map / location list ---- */
@@ -397,11 +418,6 @@ html.theme-barber .address-list li.highlighted {
 }
 html.theme-barber .address-list p {
     color: var(--ce-muted) !important;
-}
-
-.theme-toggle {
-    color: var(--ce-accent) !important;
-    font-weight: 800 !important;
 }
 
 /* Brand logos must always sit on a light background, otherwise the

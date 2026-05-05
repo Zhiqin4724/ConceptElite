@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { Map } from '../../map/map';
 import { BrandFeature } from '../../brand-feature/brand-feature';
@@ -9,6 +10,8 @@ import { StylistsCarouselComponent } from '../../carousel/stylist-carousel';
 import { InstagramPicturesComponent } from '../../instagram-pictures/instagram-pictures';
 import { InstagramVideosComponent } from '../../instagram-videos/instagram-videos';
 import { HeroComponent } from '../../hero/hero';
+import { SeoService } from '../../../service/seo.service';
+import { ThemeMode } from '../../../service/theme.service';
 
 @Component({
   selector: 'app-home',
@@ -38,4 +41,16 @@ import { HeroComponent } from '../../hero/hero';
     </main>
   `,
 })
-export class HomeComponent {}
+export class HomeComponent implements OnInit {
+  private readonly route = inject(ActivatedRoute);
+  private readonly seo = inject(SeoService);
+
+  ngOnInit(): void {
+    // Subscribe so theme/SEO update when navigating between
+    // /coiffure and /le-barbier (same component is reused).
+    this.route.data.subscribe((data) => {
+      const theme = (data['theme'] as ThemeMode) ?? 'coiffure';
+      this.seo.applyForTheme(theme);
+    });
+  }
+}

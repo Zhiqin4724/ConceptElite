@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { ThemeService } from '../../service/theme.service';
 
 interface AboutBlock {
@@ -9,7 +10,7 @@ interface AboutBlock {
   welcome?: string;
   image: string;
   imageAlt: string;
-  cta?: { label: string; targetId?: string };
+  cta?: { label: string; targetId?: string; route?: string };
 }
 
 @Component({
@@ -21,6 +22,7 @@ interface AboutBlock {
 })
 export class AboutUs {
   private readonly theme = inject(ThemeService);
+  private readonly router = inject(Router);
 
   private readonly coiffureBlocks: AboutBlock[] = [
     {
@@ -41,7 +43,7 @@ export class AboutUs {
       welcome: 'Discover what your hair has been waiting for.',
       image: 'assets/about/salon-detail.jpg',
       imageAlt: 'Concept Elite Coiffure product display',
-      cta: { label: 'EXPLORE OUR PRODUCTS', targetId: 'products' },
+      cta: { label: 'EXPLORE OUR PRODUCTS', route: '/shop' },
     },
   ];
 
@@ -64,7 +66,7 @@ export class AboutUs {
       welcome: 'Sharp on the chair. Sharp at home.',
       image: 'assets/about/salon-detail.jpg',
       imageAlt: 'Concept Elite Barber grooming products',
-      cta: { label: 'EXPLORE OUR PRODUCTS', targetId: 'products' },
+      cta: { label: 'EXPLORE OUR PRODUCTS', route: '/shop' },
     },
   ];
 
@@ -72,8 +74,16 @@ export class AboutUs {
     this.theme.mode() === 'barber' ? this.barberBlocks : this.coiffureBlocks,
   );
 
-  scrollTo(id?: string): void {
-    if (!id) return;
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  handleCta(cta: AboutBlock['cta']): void {
+    if (!cta) return;
+    if (cta.route) {
+      this.router.navigate([cta.route]);
+      return;
+    }
+    if (cta.targetId) {
+      document
+        .getElementById(cta.targetId)
+        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }

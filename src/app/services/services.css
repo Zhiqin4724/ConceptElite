@@ -10,255 +10,429 @@
   color: var(--ce-text, #1a1a1d);
 }
 
-.services-card-component {
+/* ---------- Section heading ---------- */
+.services-heading {
+  max-width: 760px;
+  margin: 0 auto clamp(40px, 5vw, 64px);
+  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  align-items: center;
+  gap: 14px;
+}
+
+.services-heading__eyebrow {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #c59a78;
+}
+
+.services-heading__title {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 3.4vw, 2.85rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ce-text, #1a1a1d);
+  margin: 0;
+  line-height: 1.15;
+}
+
+.services-heading__subtitle {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+  line-height: 1.6;
+  color: var(--ce-muted, #4a4a4f);
+  margin: 0;
+  max-width: 620px;
+}
+
+.services-heading__divider {
+  display: block;
+  width: 64px;
+  height: 2px;
+  margin-top: 6px;
+  background: linear-gradient(90deg, #8c1e1b 0%, #c59a78 100%);
+}
+
+html.theme-barber .services-heading__eyebrow { color: #d4a64a !important; }
+html.theme-barber .services-heading__title { color: #f5f0e6 !important; }
+html.theme-barber .services-heading__subtitle { color: #c8c8cc !important; }
+html.theme-barber .services-heading__divider {
+  background: linear-gradient(90deg, #d4a64a 0%, #ffffff 100%);
+}
+
+/* =========================================================================
+   BENTO LAYOUT — coiffure price list
+   Asymmetric grid: featured tile + supporting tiles, all visible at once.
+   ========================================================================= */
+.services-bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, minmax(150px, auto));
+  grid-template-areas:
+    'feature feature side1'
+    'feature feature tall'
+    'wide    wide    tall';
+  gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.services-column {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
-  height: auto;
-  margin: 0;
-  border-radius: 0;
-}
-
-.services-column--single {
+.services-bento--single {
   grid-template-columns: minmax(0, 720px);
+  grid-template-rows: minmax(440px, auto);
+  grid-template-areas: 'feature';
   justify-content: center;
 }
 
-/* ---------- Card shell ---------- */
-.services-card-img {
+.services-bento--single .bento-tile {
+  min-height: 440px;
+}
+
+.bento-tile {
   position: relative;
-  height: 440px;
-  width: 100%;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 26px 28px;
+  background: #ffffff;
+  border: 1px solid var(--ce-card-border, #e6e2dc);
+  border-radius: 18px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 14px 32px rgba(0, 0, 0, 0.06);
   overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
   cursor: pointer;
-  background: #1a1a1d;             /* dark sliver visible at edges */
-  border: 1px solid var(--ce-card-border, #d4d4d8);
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.05),
-    0 10px 28px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.services-card-img:hover {
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.06),
-    0 18px 40px rgba(140, 30, 27, 0.18);
-}
-
-.services-card-img--single { width: 100%; max-width: 720px; margin: 0 auto; }
-
-/* ---------- Front face ---------- */
-.services-card-front-content {
+/* ---------- Sliding image cover ---------- */
+.bento-tile__cover {
   position: absolute;
   inset: 0;
-  box-sizing: border-box;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 22px;
-  padding: 32px;
-  background: #ffffff;
-  z-index: 2;
-  transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+  gap: 10px;
+  padding: 28px;
+  text-align: center;
+  background-color: #2a1a18;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform;
 }
 
-/* Top brand ribbon: burgundy -> gold */
-.services-card-front-content::before {
+.bento-tile__cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 26, 29, 0.25) 0%,
+    rgba(26, 26, 29, 0.55) 60%,
+    rgba(79, 29, 26, 0.78) 100%
+  );
+  z-index: 1;
+}
+
+.bento-tile__cover::after {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 4px;
+  height: 3px;
+  background: linear-gradient(90deg, #8c1e1b 0%, #c59a78 100%);
+  z-index: 2;
+}
+
+.bento-tile__cover-eyebrow,
+.bento-tile__cover-title,
+.bento-tile__cover-hint {
+  position: relative;
+  z-index: 2;
+}
+
+.bento-tile__cover-eyebrow {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #e7c9a8;
+}
+
+.bento-tile__cover-title {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin: 0;
+  line-height: 1.1;
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+.bento-tile[data-index='0'] .bento-tile__cover-title {
+  font-size: clamp(2rem, 3vw, 2.75rem);
+}
+
+.bento-tile__cover-hint {
+  margin-top: 8px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+  opacity: 0.85;
+}
+
+/* Slide cover up on hover/focus */
+.bento-tile:hover .bento-tile__cover,
+.bento-tile:focus-within .bento-tile__cover {
+  transform: translateY(-100%);
+}
+
+.bento-tile::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
   background: linear-gradient(90deg, #8c1e1b 0%, #c59a78 100%);
 }
 
-.services-card-picture {
+.bento-tile:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.06),
+    0 22px 44px rgba(140, 30, 27, 0.16);
+}
+
+/* Bento area assignment by index */
+.bento-tile[data-index='0'] { grid-area: feature; }
+.bento-tile[data-index='1'] { grid-area: side1; }
+.bento-tile[data-index='2'] { grid-area: tall; }
+.bento-tile[data-index='3'] { grid-area: wide; }
+
+/* Featured tile gets a warm tint */
+.bento-tile[data-index='0'] {
+  background: linear-gradient(160deg, #fff8f3 0%, #ffffff 60%);
+}
+
+/* ---------- Header ---------- */
+.bento-tile__head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #efe7df;
+}
+
+.bento-tile__icon {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 96px;
-  height: 96px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: #f7eee8;
   border: 1px solid #e7d6c8;
-  margin: 0;
 }
 
-.services-card-picture img {
-  width: 50px;
-  height: 50px;
+.bento-tile[data-index='0'] .bento-tile__icon {
+  width: 72px;
+  height: 72px;
+}
+
+.bento-tile__icon img {
+  width: 28px;
+  height: 28px;
   object-fit: contain;
   filter:
     brightness(0)
     invert(13%) sepia(85%) saturate(2200%) hue-rotate(351deg) brightness(78%);
 }
 
-.services-card-title {
+.bento-tile[data-index='0'] .bento-tile__icon img {
+  width: 36px;
+  height: 36px;
+}
+
+.bento-tile__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.bento-tile__eyebrow {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: #c59a78;
+}
+
+.bento-tile__title {
   font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  font-size: clamp(1.85rem, 2.6vw, 2.4rem);
+  font-size: clamp(1.35rem, 1.8vw, 1.75rem);
   font-weight: 500;
   letter-spacing: 0.01em;
   color: #1a1a1d;
   margin: 0;
-  text-align: center;
   line-height: 1.1;
 }
 
-.services-card-front-content::after {
-  content: 'TARIFS';
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.42em;
-  color: #c59a78;
-  text-transform: uppercase;
+.bento-tile[data-index='0'] .bento-tile__title {
+  font-size: clamp(1.75rem, 2.4vw, 2.25rem);
 }
 
-.services-card-img:hover .services-card-front-content,
-.services-card-img:nth-of-type(2):hover .services-card-front-content {
-  transform: translateY(-100%);
-}
-
-/* ---------- Back face: pricing menu ---------- */
-.services-card-back-content {
-  position: absolute;
-  inset: 0;
-  box-sizing: border-box;
-  background: #ffffff;
-  z-index: 1;
-  padding: 36px 40px 32px;
+/* ---------- Price list ---------- */
+.bento-tile__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  margin: 0;
+  gap: 8px;
+  flex: 1 1 auto;
 }
 
-.services-card-back-content::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #8c1e1b 0%, #c59a78 100%);
-}
-
-.services-card-details {
+.bento-tile__row {
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: space-between;
-  gap: 24px;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  background: transparent;
-}
-
-.services-list-choices,
-.services-list-prices {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  min-width: 0;
-}
-
-.services-list-choices { flex: 1 1 auto; }
-.services-list-prices { flex: 0 0 auto; }
-
-/* Section headers ("Haircut" / "Price") */
-.services-list-choices-title {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: #8c1e1b;
-  margin: 0 0 4px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #c59a78;
-}
-.services-list-prices .services-list-choices-title {
-  text-align: right;
-}
-
-/* Choice rows: dark serif text, easy to read */
-.services-list-choices .services-list-choices-detail {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1rem;
-  color: #1a1a1d;
-  margin: 0;
-  line-height: 1.4;
-}
-
-/* Price rows: bold burgundy serif, right-aligned */
-.services-list-prices .services-list-choices-detail {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #4f1d1a;
-  margin: 0;
-  text-align: right;
-  line-height: 1.4;
-  white-space: nowrap;
-}
-
-/* Subtle row separator */
-.services-list-choices .services-list-choices-detail,
-.services-list-prices .services-list-choices-detail {
+  align-items: baseline;
+  gap: 10px;
   padding: 6px 0;
-  border-bottom: 1px dotted rgba(140, 30, 27, 0.18);
+  border-bottom: 1px dotted rgba(140, 30, 27, 0.16);
 }
 
-/* Last row: drop the divider */
-.services-list-choices .services-list-choices-detail:last-child,
-.services-list-prices .services-list-choices-detail:last-child {
+.bento-tile__row:last-child {
   border-bottom: none;
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 800px) {
-  .services-column { grid-template-columns: 1fr; }
-  .services-card-img { height: 380px; }
-  .services-card-back-content { padding: 28px 24px; }
+.bento-tile__label {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.98rem;
+  color: #1a1a1d;
+  line-height: 1.4;
 }
 
-/* ---------- Barber theme ---------- */
-html.theme-barber .services-card-img {
-  background: #2a2b2f;
+.bento-tile__dots {
+  flex: 1 1 auto;
+  height: 1px;
+  border-bottom: 1px dotted rgba(140, 30, 27, 0.28);
+  transform: translateY(-4px);
+}
+
+.bento-tile__price {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #4f1d1a;
+  white-space: nowrap;
+}
+
+.bento-tile[data-index='0'] .bento-tile__price {
+  font-size: 1.12rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .services-bento {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      'feature feature'
+      'side1   tall'
+      'wide    tall';
+  }
+}
+
+@media (max-width: 620px) {
+  .services-bento {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'feature'
+      'side1'
+      'tall'
+      'wide';
+  }
+  .bento-tile { padding: 22px; }
+}
+
+/* ---------- Barber theme overrides for bento ---------- */
+html.theme-barber .bento-tile {
+  background: #1f2024;
   border-color: #3a3b40;
 }
-html.theme-barber .services-card-front-content,
-html.theme-barber .services-card-back-content {
-  background: #1f2024;
+html.theme-barber .bento-tile[data-index='0'] {
+  background: linear-gradient(160deg, #25262b 0%, #1f2024 60%);
 }
-html.theme-barber .services-card-front-content::before,
-html.theme-barber .services-card-back-content::before {
+html.theme-barber .bento-tile::before {
   background: linear-gradient(90deg, #d4a64a 0%, #ffffff 100%);
 }
-html.theme-barber .services-card-picture {
+html.theme-barber .bento-tile__head {
+  border-bottom-color: #3a3b40;
+}
+html.theme-barber .bento-tile__icon {
   background: #2a2b2f;
   border-color: #3a3b40;
 }
-html.theme-barber .services-card-picture img {
+html.theme-barber .bento-tile__icon img {
   filter:
     brightness(0)
     invert(72%) sepia(45%) saturate(540%) hue-rotate(2deg) brightness(95%);
 }
-html.theme-barber .services-card-title { color: #ffffff !important; }
-html.theme-barber .services-card-front-content::after { color: #d4a64a; }
-html.theme-barber .services-list-choices-title {
-  color: #ffffff !important;
-  border-bottom-color: #d4a64a;
-}
-html.theme-barber .services-list-choices .services-list-choices-detail { color: #ffffff !important; }
-html.theme-barber .services-list-prices .services-list-choices-detail { color: #ffffff !important; }
-html.theme-barber .services-list-choices .services-list-choices-detail,
-html.theme-barber .services-list-prices .services-list-choices-detail {
+html.theme-barber .bento-tile__eyebrow { color: #d4a64a; }
+html.theme-barber .bento-tile__title,
+html.theme-barber .bento-tile__label,
+html.theme-barber .bento-tile__price { color: #ffffff; }
+html.theme-barber .bento-tile__row {
   border-bottom-color: rgba(212, 166, 74, 0.2);
+}
+html.theme-barber .bento-tile__dots {
+  border-bottom-color: rgba(212, 166, 74, 0.32);
+}
+
+html.theme-barber .bento-tile__cover {
+  background-color: #1a1b1f;
+}
+html.theme-barber .bento-tile__cover::before {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.6) 60%,
+    rgba(212, 166, 74, 0.35) 100%
+  );
+}
+html.theme-barber .bento-tile__cover::after {
+  background: linear-gradient(90deg, #d4a64a 0%, #ffffff 100%);
+}
+html.theme-barber .bento-tile__cover-eyebrow { color: #d4a64a; }
+
+/* Touch devices: no hover, so reveal cover via tap toggle */
+@media (hover: none) {
+  .bento-tile__cover-hint::before {
+    content: 'Tap ';
+  }
+  .bento-tile__cover-hint {
+    font-size: 0;
+  }
+  .bento-tile__cover-hint::before {
+    font-size: 0.68rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+  .bento-tile:focus .bento-tile__cover,
+  .bento-tile:active .bento-tile__cover {
+    transform: translateY(-100%);
+  }
 }
