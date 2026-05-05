@@ -16,28 +16,43 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 :root,
 html.theme-coiffure {
-    /* Greys */
-    --ce-bg: #f4f4f5;
-    --ce-surface: #e7e7ea;
-    --ce-surface-2: #d4d4d8;
-    --ce-text: #1a1a1d;
-    --ce-muted: #5a5a60;
-    --ce-card-bg: #ffffff;
-    --ce-card-border: #c7c7cc;
+    /* Palette (Pantone reference):
+         #140B09 black     -- 60% dominant
+         #8C1E1B red       -- 30% secondary
+         #4F1D1A burgundy  -- supporting red
+         #8D745B gold      -- 10% accent
+         #C59A78 caramel   -- subtle accent / hover
+         #F8EBE6 cream     -- text on dark
+         #D1BBAF tan       -- muted text */
 
-    /* Reds + golds */
-    --ce-accent: #8c1e1b;          /* brand red */
-    --ce-accent-deep: #4f1d1a;     /* burgundy */
-    --ce-accent-gold: #c59a78;     /* warm gold */
-    --ce-accent-bronze: #8d745b;
+    /* 60% — black surfaces */
+    --ce-bg: #140B09;
+    --ce-surface: #1C100E;
+    --ce-surface-2: #261614;
 
-    --ce-toolbar-bg: #1a1a1d;      /* dark grey bar so red/gold pop */
-    --ce-toolbar-text: #f4f4f5;
-    --ce-toolbar-hover: #c59a78;
+    /* Text */
+    --ce-text: #F8EBE6;
+    --ce-muted: #D1BBAF;
 
-    --ce-cta-bg: #8c1e1b;
-    --ce-cta-text: #ffffff;
-    --ce-cta-hover: #4f1d1a;
+    /* 30% — red cards / panels */
+    --ce-card-bg: #261614;
+    --ce-card-border: #4F1D1A;
+
+    /* 30% — red accents */
+    --ce-accent: #8C1E1B;
+    --ce-accent-deep: #4F1D1A;
+
+    /* 10% — gold accent */
+    --ce-accent-gold: #8D745B;
+    --ce-accent-bronze: #8D745B;
+
+    --ce-toolbar-bg: #140B09;
+    --ce-toolbar-text: #F8EBE6;
+    --ce-toolbar-hover: #8D745B;
+
+    --ce-cta-bg: #8C1E1B;
+    --ce-cta-text: #F8EBE6;
+    --ce-cta-hover: #4F1D1A;
 }
 
 html.theme-barber {
@@ -202,26 +217,34 @@ html.theme-barber .top-nav a.theme-toggle:focus {
 }
 
 /* ---- Map / location list ---- */
-html.theme-coiffure .list-panel {
-    background-color: var(--ce-surface) !important;
-    border-left: 1px solid var(--ce-card-border) !important;
-    color: var(--ce-text);
+html.theme-coiffure app-map {
+    background: #140B09 !important;
+    color: #F8EBE6 !important;
 }
+html.theme-coiffure .list-panel {
+    background-color: #140B09 !important;
+    border-left: 1px solid #4F1D1A !important;
+    color: #F8EBE6 !important;
+}
+html.theme-coiffure .list-panel h3 { color: #F8EBE6 !important; }
 html.theme-coiffure .address-list li {
-    background-color: var(--ce-card-bg) !important;
-    border-color: var(--ce-card-border) !important;
-    color: var(--ce-text);
+    background-color: #261614 !important;
+    border: 1px solid #4F1D1A !important;
+    color: #F8EBE6 !important;
 }
 html.theme-coiffure .address-list li:hover {
-    background-color: #f4f4f5 !important;
-    border-color: var(--ce-accent) !important;
+    background-color: #321B19 !important;
+    border-color: #8C1E1B !important;
 }
 html.theme-coiffure .address-list li.highlighted {
-    background-color: #fdecec !important;
-    border-color: var(--ce-accent) !important;
-    box-shadow: 0 2px 8px rgba(140, 30, 27, 0.2);
+    background-color: #8C1E1B !important;
+    border-color: #8D745B !important;
+    color: #F8EBE6 !important;
+    box-shadow: 0 2px 12px rgba(140, 30, 27, 0.45);
 }
-html.theme-coiffure .address-list p { color: var(--ce-muted) !important; }
+html.theme-coiffure .address-list h4,
+html.theme-coiffure .address-list .card-title { color: #F8EBE6 !important; }
+html.theme-coiffure .address-list p { color: #D1BBAF !important; }
 
 html.theme-barber .list-panel {
     background-color: #2a2b2e !important;
