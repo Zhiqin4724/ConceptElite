@@ -223,6 +223,34 @@ html.theme-coiffure .address-list li.highlighted {
 }
 html.theme-coiffure .address-list p { color: var(--ce-muted) !important; }
 
+/* Global section reveal utility (used on home sections except map/footer). */
+.ce-reveal {
+    opacity: 0;
+    transform: translate3d(0, 36px, 0);
+    transition:
+        opacity 620ms ease var(--ce-reveal-delay, 0ms),
+        transform 700ms cubic-bezier(0.22, 0.61, 0.36, 1) var(--ce-reveal-delay, 0ms);
+    will-change: opacity, transform;
+}
+
+.ce-reveal.ce-reveal--visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ce-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* Add breathing room between stacked home sections. */
+app-home .main > * + * {
+    margin-top: clamp(32px, 5vw, 72px);
+}
+
 html.theme-barber .list-panel {
     background-color: #2a2b2e !important;
     border-left: 1px solid #4a4b4e !important;

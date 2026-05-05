@@ -5,7 +5,8 @@
 }
 .main-container {
     display: flex; /* Use flexbox for a side-by-side layout */
-    height: 70vh; /* Set a height for the entire container */
+  height: 85vh; /* Larger map section */
+  min-height: 760px;
     width: 80vw; /* Set a width for the entire container */
     padding: 1rem;
     box-sizing: border-box;

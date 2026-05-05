@@ -5,70 +5,51 @@
       <p class="section-subtitle">{{ 'portfolio.subtitle' | translate }}</p>
     </div>
   </div>
+  <div class="bento-carousel-wrapper">
+    <button class="carousel-btn" (click)="prev()" [disabled]="!canGoPrev" [attr.aria-label]="'stylists.prev' | translate">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
 
-  <div class="instagram-picture-layout">
-
-    <!-- Main image: LEFT, portrait ratio -->
-    <div class="main-picture-display" *ngIf="selectedPicture">
-      <img [src]="selectedPicture.url" [alt]="selectedPicture.alt" class="main-picture-image" />
-    </div>
-
-    <!-- Right column: text TOP, carousel BOTTOM -->
-    <div class="picture-carousel-container">
-
-      <!-- Text block (mirrors the reference image, but on the right) -->
-      <div class="champion-text-block">
-        <h2 class="champion-title">{{ 'portfolio.heroTitleStart' | translate }} <span>{{ 'portfolio.heroTitleHighlight' | translate }}</span><br>{{ 'portfolio.heroTitleEnd' | translate }}</h2>
-        <p class="champion-subtitle">
-          {{ 'portfolio.heroSubtitle' | translate }}
-        </p>
-        <div class="champion-actions">
-          <button class="btn-primary">{{ 'portfolio.ctaPrimary' | translate }}</button>
-          <button class="btn-secondary">{{ 'portfolio.ctaSecondary' | translate }}</button>
-        </div>
-      </div>
-
-      <!-- Carousel pinned to bottom-right -->
-      <div class="carousel-wrapper">
-        <button class="carousel-btn" (click)="prev()" [disabled]="!canGoPrev" [attr.aria-label]="'stylists.prev' | translate">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
-
-        <div class="carousel-viewport">
-          <div class="carousel-track" [ngClass]="animationClass ? 'exit-' + (animationClass === 'enter-left' ? 'left' : 'right') : ''">
-            <div
-              *ngFor="let picture of currentSlide; trackBy: trackByPictureId"
-              class="picture-card"
-              [class.active]="selectedPicture?.id === picture.id"
-              (click)="openPicture(picture)"
-            >
-              <img [src]="picture.url" [alt]="picture.alt" class="picture-image" />
-              <span class="picture-label">{{ picture.alt }}</span>
-            </div>
-          </div>
-
-          <div class="carousel-track overlay" [ngClass]="animationClass" *ngIf="nextSlide.length">
-            <div
-              *ngFor="let picture of nextSlide; trackBy: trackByPictureId"
-              class="picture-card"
-              [class.active]="selectedPicture?.id === picture.id"
-              (click)="openPicture(picture)"
-            >
-              <img [src]="picture.url" [alt]="picture.alt" class="picture-image" />
-              <span class="picture-label">{{ picture.alt }}</span>
-            </div>
-          </div>
-        </div>
-
-        <button class="carousel-btn" (click)="next()" [disabled]="!canGoNext" [attr.aria-label]="'stylists.next' | translate">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
+    <div class="carousel-viewport">
+      <div class="bento-grid" [ngClass]="animationClass ? 'exit-' + (animationClass === 'enter-left' ? 'left' : 'right') : ''">
+        <button
+          *ngFor="let picture of currentSlide; let i = index; trackBy: trackByPictureId"
+          type="button"
+          class="bento-item"
+          [class.bento-item--hero]="i === 0"
+          [class.bento-item--wide]="i === 2"
+          [class.active]="selectedPicture?.id === picture.id"
+          (click)="openPicture(picture)"
+          [attr.aria-label]="picture.alt"
+        >
+          <img [src]="picture.url" [alt]="picture.alt" class="picture-image" />
+          <span class="picture-label">{{ picture.alt }}</span>
         </button>
       </div>
 
+      <div class="bento-grid overlay" [ngClass]="animationClass" *ngIf="nextSlide.length">
+        <button
+          *ngFor="let picture of nextSlide; let i = index; trackBy: trackByPictureId"
+          type="button"
+          class="bento-item"
+          [class.bento-item--hero]="i === 0"
+          [class.bento-item--wide]="i === 2"
+          [class.active]="selectedPicture?.id === picture.id"
+          (click)="openPicture(picture)"
+          [attr.aria-label]="picture.alt"
+        >
+          <img [src]="picture.url" [alt]="picture.alt" class="picture-image" />
+          <span class="picture-label">{{ picture.alt }}</span>
+        </button>
+      </div>
     </div>
+
+    <button class="carousel-btn" (click)="next()" [disabled]="!canGoNext" [attr.aria-label]="'stylists.next' | translate">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
   </div>
 </section>

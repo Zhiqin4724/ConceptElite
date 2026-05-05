@@ -34,42 +34,86 @@
     </div>
   </div>
 
-  <div class="carousel-wrapper">
-
-    <button class="carousel-btn" (click)="prev()" [disabled]="!canGoPrev" [attr.aria-label]="'stylists.prev' | translate">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"></polyline>
-      </svg>
-    </button>
-
-    <div class="carousel-viewport">
-
-      <!-- Current slide -->
-      <div class="carousel-track" [ngClass]="animationClass ? 'exit-' + (animationClass === 'enter-left' ? 'left' : 'right') : ''">
-        <app-stylist-card
-          *ngFor="let stylist of currentSlide; trackBy: trackBySlug"
-          [stylist]="stylist"
-          
-        />
-      </div>
-
-      <!-- Incoming slide -->
-      <div class="carousel-track overlay" [ngClass]="animationClass" *ngIf="nextSlide.length">
-        <app-stylist-card
-          *ngFor="let stylist of nextSlide; trackBy: trackBySlug"
-          [stylist]="stylist"
-          
-        />
-      </div>
-
+  <div class="stylist-showcase" *ngIf="selectedStylist as stylist">
+    <div class="main-profile-display">
+      <img [src]="featuredImage" [alt]="stylist.name" class="main-profile-image" />
     </div>
 
-    <button class="carousel-btn" (click)="next()" [disabled]="!canGoNext" [attr.aria-label]="'stylists.next' | translate">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
-    </button>
+    <div class="profile-panel">
+      <div class="profile-content">
+        <p class="profile-eyebrow">{{ 'stylists.title' | translate }}</p>
+        <h3 class="profile-name">{{ stylist.name }}</h3>
+        <p class="profile-specialty">{{ stylist.specialty }}</p>
 
+        <div class="profile-meta-row">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>{{ stylist.location }}</span>
+        </div>
+
+        <div class="profile-meta-row" *ngIf="stylist.availability">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>{{ stylist.availability }}</span>
+        </div>
+
+        <p class="profile-bio" *ngIf="stylist.bio">{{ stylist.bio }}</p>
+
+        <a class="profile-cta" [routerLink]="['/stylists', stylist.slug]">
+          {{ 'stylists.viewProfile' | translate }}
+        </a>
+      </div>
+
+      <div class="carousel-wrapper">
+        <button class="carousel-btn" (click)="prev()" [disabled]="!canGoPrev" [attr.aria-label]="'stylists.prev' | translate">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="carousel-viewport">
+          <div class="carousel-track" [ngClass]="animationClass ? 'exit-' + (animationClass === 'enter-left' ? 'left' : 'right') : ''">
+            <button
+              *ngFor="let card of currentSlide; trackBy: trackBySlug"
+              type="button"
+              class="stylist-thumb"
+              [class.active]="stylist.id === card.id"
+              (click)="selectStylist(card)"
+              [attr.aria-label]="card.name"
+            >
+              <img [src]="card.imageUrl" [alt]="card.name" class="thumb-image" loading="lazy" />
+              <span class="thumb-name">{{ card.name }}</span>
+            </button>
+          </div>
+
+          <div class="carousel-track overlay" [ngClass]="animationClass" *ngIf="nextSlide.length">
+            <button
+              *ngFor="let card of nextSlide; trackBy: trackBySlug"
+              type="button"
+              class="stylist-thumb"
+              [class.active]="stylist.id === card.id"
+              (click)="selectStylist(card)"
+              [attr.aria-label]="card.name"
+            >
+              <img [src]="card.imageUrl" [alt]="card.name" class="thumb-image" loading="lazy" />
+              <span class="thumb-name">{{ card.name }}</span>
+            </button>
+          </div>
+        </div>
+
+        <button class="carousel-btn" (click)="next()" [disabled]="!canGoNext" [attr.aria-label]="'stylists.next' | translate">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 
 </section>

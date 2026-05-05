@@ -1,15 +1,14 @@
-import { Component, OnInit, OnDestroy, effect, inject } from '@angular/core';
+import { Component, OnInit, effect, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { trigger, transition, style, animate, query, group } from '@angular/animations';
+import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { StylistCardComponent } from '../../component/card/stylist-card.component';
 import { StylistService } from '../../service/stylist.service';
 import { Stylist } from '../../model/stylist.model';
 import { ThemeService } from '../../service/theme.service';
 
 @Component({
   selector: 'app-stylists-carousel',
-  imports: [CommonModule, TranslateModule, StylistCardComponent],
+  imports: [CommonModule, RouterModule, TranslateModule],
   templateUrl: './stylist-carousel.html',
   styleUrls: ['./stylist-carousel.css'],
 })
@@ -27,6 +26,7 @@ export class StylistsCarouselComponent implements OnInit {
  
   currentSlide: Stylist[] = [];
   nextSlide: Stylist[] = [];
+  selectedStylist: Stylist | null = null;
   isAnimating = false;
   animationClass = '';
  
@@ -69,6 +69,7 @@ export class StylistsCarouselComponent implements OnInit {
     this.filteredStylists = list;
     this.currentIndex = 0;
     this.currentSlide = this.getSlice(0);
+    this.selectedStylist = this.currentSlide[0] ?? this.filteredStylists[0] ?? null;
     this.nextSlide = [];
     this.animationClass = '';
     this.isAnimating = false;
@@ -114,10 +115,22 @@ export class StylistsCarouselComponent implements OnInit {
     setTimeout(() => {
       this.currentIndex = newIndex;
       this.currentSlide = this.nextSlide;
+      if (!this.selectedStylist && this.currentSlide.length) {
+        this.selectedStylist = this.currentSlide[0];
+      }
       this.nextSlide = [];
       this.animationClass = '';
       this.isAnimating = false;
     }, 400);
+  }
+
+  selectStylist(stylist: Stylist): void {
+    this.selectedStylist = stylist;
+  }
+
+  get featuredImage(): string {
+    if (!this.selectedStylist) return '';
+    return this.selectedStylist.portfolioImages?.[0] ?? this.selectedStylist.imageUrl;
   }
  
   trackBySlug(_: number, stylist: Stylist): string {

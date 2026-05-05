@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from '../../service/theme.service';
@@ -28,9 +28,11 @@ interface AboutBlockConfig {
   templateUrl: './about-us.html',
   styleUrl: './about-us.css',
 })
-export class AboutUs {
+export class AboutUs implements AfterViewInit, OnDestroy {
   private readonly theme = inject(ThemeService);
   private readonly router = inject(Router);
+  private readonly host = inject(ElementRef<HTMLElement>);
+  private revealObserver?: IntersectionObserver;
 
   /** Layout/asset config (text comes from i18n). */
   private readonly blocksConfig: AboutBlockConfig[] = [
@@ -64,6 +66,39 @@ export class AboutUs {
       cta: block.cta,
     }));
   });
+
+  ngAfterViewInit(): void {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      return;
+    }
+
+    const hostElement = this.host.nativeElement as HTMLElement;
+    const rows = Array.from(hostElement.querySelectorAll('.about-us__row')) as HTMLElement[];
+    rows.forEach((row: HTMLElement, index: number) => {
+      row.style.setProperty('--about-reveal-delay', `${index * 140}ms`);
+    });
+
+    this.revealObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const row = entry.target as HTMLElement;
+          row.classList.add('is-visible');
+          this.revealObserver?.unobserve(row);
+        }
+      },
+      {
+        threshold: 0.25,
+        rootMargin: '0px 0px -12% 0px',
+      },
+    );
+
+    rows.forEach((row: HTMLElement) => this.revealObserver?.observe(row));
+  }
+
+  ngOnDestroy(): void {
+    this.revealObserver?.disconnect();
+  }
 
   handleCta(cta: AboutBlock['cta']): void {
     if (!cta) return;

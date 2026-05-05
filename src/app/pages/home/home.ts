@@ -12,6 +12,7 @@ import { InstagramVideosComponent } from '../../instagram-videos/instagram-video
 import { HeroComponent } from '../../hero/hero';
 import { SeoService } from '../../../service/seo.service';
 import { ThemeMode } from '../../../service/theme.service';
+import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'app-home',
@@ -27,17 +28,18 @@ import { ThemeMode } from '../../../service/theme.service';
     InstagramPicturesComponent,
     InstagramVideosComponent,
     HeroComponent,
+    RevealOnScrollDirective,
   ],
   template: `
     <main class="main" style="padding-top: 80px;">
       <app-hero></app-hero>
-      <app-about-us id="about-us"></app-about-us>
-      <app-services id="services"></app-services>
-      <app-stylists-carousel></app-stylists-carousel>
-      <app-instagram-pictures></app-instagram-pictures>
-      <app-instagram-videos></app-instagram-videos>
+      <app-about-us id="about-us" appRevealOnScroll [revealDelay]="70"></app-about-us>
+      <app-services id="services" appRevealOnScroll [revealDelay]="100"></app-services>
+      <app-stylists-carousel appRevealOnScroll [revealDelay]="120"></app-stylists-carousel>
+      <app-instagram-pictures appRevealOnScroll [revealDelay]="140"></app-instagram-pictures>
+      <app-instagram-videos appRevealOnScroll [revealDelay]="160"></app-instagram-videos>
       <app-map id="location"></app-map>
-      <app-brand-feature></app-brand-feature>
+      <app-brand-feature appRevealOnScroll [revealDelay]="180"></app-brand-feature>
     </main>
   `,
 })
