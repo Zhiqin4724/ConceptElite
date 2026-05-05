@@ -224,25 +224,28 @@ html.theme-coiffure .address-list li.highlighted {
 html.theme-coiffure .address-list p { color: var(--ce-muted) !important; }
 
 html.theme-barber .list-panel {
-    background-color: var(--ce-surface) !important;
-    border-left: 1px solid var(--ce-card-border) !important;
-    color: var(--ce-text);
+    background-color: #2a2b2e !important;
+    border-left: 1px solid #4a4b4e !important;
+    color: #f0f0f0 !important;
 }
 html.theme-barber .address-list li {
-    background-color: var(--ce-card-bg) !important;
-    border-color: var(--ce-card-border) !important;
-    color: var(--ce-text);
+    background-color: #5a5c60 !important;
+    border: 1px solid #7a7c80 !important;
+    color: #ffffff !important;
 }
 html.theme-barber .address-list li:hover {
-    background-color: #1f2024 !important;
+    background-color: #66686c !important;
     border-color: var(--ce-accent-gold) !important;
 }
 html.theme-barber .address-list li.highlighted {
-    background-color: #2a230f !important;
+    background-color: #4d4326 !important;
     border-color: var(--ce-accent-gold) !important;
-    box-shadow: 0 2px 8px rgba(212, 166, 74, 0.25);
+    box-shadow: 0 2px 12px rgba(212, 166, 74, 0.4);
 }
-html.theme-barber .address-list p { color: var(--ce-muted) !important; }
+html.theme-barber .address-list h4,
+html.theme-barber .address-list .card-title { color: #ffffff !important; }
+html.theme-barber .address-list p { color: #e0e0e0 !important; }
+html.theme-barber .list-panel h3 { color: #f0f0f0 !important; }
 
 /* ---- Footer ---- */
 html.theme-coiffure app-footer { background: var(--ce-toolbar-bg); color: var(--ce-toolbar-text); }
@@ -254,10 +257,13 @@ html.theme-barber app-footer { background: var(--ce-toolbar-bg); color: var(--ce
    -> instagram-pics -> instagram-videos -> map -> brand-feature.
    Even slots use --ce-bg (deepest), odd slots use --ce-surface (lifted). */
 html.theme-barber app-about-us,
-html.theme-barber app-instagram-pictures,
-html.theme-barber app-map {
+html.theme-barber app-instagram-pictures {
     background: var(--ce-bg);
     color: var(--ce-text);
+}
+html.theme-barber app-map {
+    background: #2a2b2e !important;
+    color: #f0f0f0 !important;
 }
 html.theme-barber app-services,
 html.theme-barber app-stylists-carousel,
@@ -434,25 +440,33 @@ html.theme-barber .services-card-img {
     background-color: var(--ce-accent-soft) !important;
 }
 html.theme-barber .list-panel {
-    background-color: var(--ce-surface) !important;
-    border-left-color: var(--ce-card-border) !important;
-    color: var(--ce-text);
+    background-color: #2a2b2e !important;
+    border-left-color: #4a4b4e !important;
+    color: #f0f0f0 !important;
 }
 html.theme-barber .address-list li {
-    background-color: var(--ce-card-bg) !important;
-    border-color: var(--ce-card-border) !important;
-    color: var(--ce-text);
+    background-color: #5a5c60 !important;
+    border: 1px solid #7a7c80 !important;
+    color: #ffffff !important;
 }
 html.theme-barber .address-list li:hover {
-    background-color: #24252a !important;
+    background-color: #66686c !important;
     border-color: var(--ce-accent) !important;
 }
 html.theme-barber .address-list li.highlighted {
-    background-color: #2a230f !important;
+    background-color: #4d4326 !important;
     border-color: var(--ce-accent) !important;
+    box-shadow: 0 2px 12px rgba(212, 166, 74, 0.4) !important;
+}
+html.theme-barber .address-list h4,
+html.theme-barber .address-list .card-title {
+    color: #ffffff !important;
 }
 html.theme-barber .address-list p {
-    color: var(--ce-muted) !important;
+    color: #e0e0e0 !important;
+}
+html.theme-barber .list-panel h3 {
+    color: #f0f0f0 !important;
 }
 
 /* Brand logos must always sit on a light background, otherwise the

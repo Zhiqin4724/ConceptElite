@@ -32,24 +32,37 @@
 .videos-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: 20px;
 }
 
 .main-video-player {
   width: 100%;
-  height: 400px;
+  max-width: 960px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background: #000;
 }
 
+.main-video-player img,
+.main-video-player video,
+.main-video-player iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .carousel-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
   width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .carousel-btn {
@@ -80,7 +93,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  height: 400px;
+  height: 110px;
 }
 
 .carousel-track {
@@ -154,7 +167,7 @@
   cursor: pointer;
   border-radius: 8px;
   overflow: hidden;
-  height: 150px;
+  height: 100%;
   position: relative;
   border: 3px solid transparent;
   transition: all 0.2s;
@@ -198,7 +211,7 @@
 
 @media (max-width: 1200px) {
   .main-video-player {
-    height: 350px;
+    aspect-ratio: 16 / 9;
   }
 }
 
@@ -208,7 +221,7 @@
   }
 
   .main-video-player {
-    height: 300px;
+    aspect-ratio: 16 / 9;
   }
 
   .section-title {
@@ -218,7 +231,7 @@
 
 @media (max-width: 480px) {
   .main-video-player {
-    height: 200px;
+    aspect-ratio: 16 / 9;
   }
 
   .section-title {

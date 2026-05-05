@@ -47,26 +47,161 @@
   }
   
   .address-list li:hover {
-    background-color: #eef;
-    border-color: #b0c4de;
+    background-color: #fafafa;
+    border-color: #ccc;
   }
-  
-  /* Style for the highlighted item */
-  .address-list li.highlighted {
-    background-color: #e3f2fd; /* A light blue color */
-    border-color: #2196f3; /* A darker blue border */
-    font-weight: bold;
-    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
-  }
-  
+
   .address-list h4, .address-list p {
     margin: 0;
     padding: 0;
   }
-  
+
   .address-list p {
     font-size: 0.9rem;
     color: #555;
+  }
+
+  .address-list .card-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .address-list .card-phone:hover {
+    text-decoration: underline;
+  }
+
+  .address-list .card-scope {
+    display: inline-block;
+    margin-top: 6px;
+    margin-left: 8px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* ============================================================
+     COIFFURE SIDE — red + gold accents
+     ============================================================ */
+  .theme-coiffure .address-list .card-phone {
+    color: #b71c1c;
+  }
+
+  .theme-coiffure .address-list .card-scope {
+    color: #b71c1c;
+    background: #fdecea;
+    border: 1px solid #f3b6b1;
+  }
+
+  .theme-coiffure .address-list li.highlighted {
+    background-color: #fdecea;
+    border-color: #b71c1c;
+    font-weight: bold;
+    box-shadow: 0 2px 10px rgba(183, 28, 28, 0.25);
+  }
+
+  /* Barber salon on coiffure side: subtle gold accent, NOT loud */
+  .theme-coiffure .address-list li.is-barber {
+    border: 1px solid #d4a64a;
+    background: #fffdf7;
+    box-shadow: 0 1px 6px rgba(184, 134, 11, 0.15);
+  }
+
+  .theme-coiffure .address-list li.is-barber .card-title::before {
+    content: "★ ";
+    color: #b8860b;
+  }
+
+  .theme-coiffure .address-list li.is-barber .card-scope {
+    color: #7a5a1f;
+    background: #fff6e0;
+    border: 1px solid #d4a64a;
+  }
+
+  .theme-coiffure .address-list li.is-barber .card-phone {
+    color: #7a5a1f;
+  }
+
+  /* Highlighted barber row on coiffure side: red selection ring + gold tint */
+  .theme-coiffure .address-list li.is-barber.highlighted {
+    border-color: #b71c1c;
+    background: #fff6e0;
+    box-shadow: 0 2px 12px rgba(183, 28, 28, 0.25);
+  }
+
+  /* ============================================================
+     BARBER SIDE — gold / black / white only
+     ============================================================ */
+  .theme-barber .address-list .card-phone {
+    color: #1a1a1a;
+  }
+
+  .theme-barber .address-list .card-scope {
+    color: #1a1a1a;
+    background: #fff;
+    border: 1px solid #1a1a1a;
+  }
+
+  .theme-barber .address-list li.highlighted {
+    background-color: #fff;
+    border-color: #1a1a1a;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  /* The barber salon: solid gold matching the hero CTA button */
+  .theme-barber .address-list li.is-barber,
+  html.theme-barber .address-list li.is-barber {
+    border: 1px solid #d4a64a !important;
+    background: #d4a64a !important;
+    box-shadow: 0 4px 14px rgba(212, 166, 74, 0.35) !important;
+  }
+
+  .theme-barber .address-list li.is-barber:hover,
+  html.theme-barber .address-list li.is-barber:hover {
+    background: #e8bb5a !important;
+    border-color: #e8bb5a !important;
+  }
+
+  .theme-barber .address-list li.is-barber.highlighted,
+  html.theme-barber .address-list li.is-barber.highlighted {
+    background: #e8bb5a !important;
+    border-color: #1a1a1a !important;
+    box-shadow: 0 4px 18px rgba(212, 166, 74, 0.6) !important;
+  }
+
+  .theme-barber .address-list li.is-barber .card-title,
+  .theme-barber .address-list li.is-barber .card-address-line1,
+  .theme-barber .address-list li.is-barber .card-address-line2,
+  html.theme-barber .address-list li.is-barber .card-title,
+  html.theme-barber .address-list li.is-barber .card-address-line1,
+  html.theme-barber .address-list li.is-barber .card-address-line2 {
+    color: #1a1a1a !important;
+  }
+
+  .theme-barber .address-list li.is-barber .card-title::before,
+  html.theme-barber .address-list li.is-barber .card-title::before {
+    content: "★ ";
+    color: #1a1a1a;
+  }
+
+  .theme-barber .address-list li.is-barber .card-phone,
+  html.theme-barber .address-list li.is-barber .card-phone {
+    color: #1a1a1a !important;
+  }
+
+  .theme-barber .address-list li.is-barber .card-scope,
+  html.theme-barber .address-list li.is-barber .card-scope {
+    color: #1a1a1a !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid #1a1a1a !important;
   }
   
   /* UPDATED: Use flex-grow to make the map fill the new flex container */
