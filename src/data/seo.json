@@ -1,0 +1,27 @@
+{
+  "site": {
+    "origin": "https://www.conceptelite.com",
+    "defaultLang": "fr-CA",
+    "address": {
+      "addressLocality": "Montréal",
+      "addressRegion": "QC",
+      "addressCountry": "CA"
+    }
+  },
+  "themes": {
+    "coiffure": {
+      "title": "Concept Elite Coiffure | Salon de coiffure expert à Montréal",
+      "description": "Concept Elite Coiffure — salon de coiffure à Montréal spécialisé en coupe, coloration, balayage et soins capillaires haut de gamme.",
+      "path": "/coiffure",
+      "schemaType": "HairSalon",
+      "businessName": "Concept Elite Coiffure"
+    },
+    "barber": {
+      "title": "Concept Elite Le Barbier | Barbier traditionnel à Montréal",
+      "description": "Concept Elite Le Barbier — barbier à Montréal pour coupes classiques, dégradés, taille de barbe et rasage à la serviette chaude.",
+      "path": "/le-barbier",
+      "schemaType": "BarberShop",
+      "businessName": "Concept Elite Le Barbier"
+    }
+  }
+}

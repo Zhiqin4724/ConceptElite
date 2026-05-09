@@ -1,4 +1,6 @@
-<div class="map-app-container">
+<div class="map-app-container"
+     [class.theme-barber]="themeMode() === 'barber'"
+     [class.theme-coiffure]="themeMode() === 'coiffure'">
   <div class="main-container">
     <div class="map-panel">
       <google-map [center]="center" [zoom]="zoom" [options]="mapOptions" height="100%" width="100%"
@@ -11,6 +13,7 @@
       <ul class="address-list">
         <li *ngFor="let location of locations"
             [class.highlighted]="selectedLocationId === location.id"
+            [class.is-barber]="location.scope === 'barber'"
             (click)="onListClick(location)">
 
           <h4 class="card-title">{{ location.title }}</h4>
@@ -18,6 +21,14 @@
           <p class="card-address-line1">{{ location.address1 }}</p>
 
           <p class="card-address-line2">{{ location.address2 }}</p>
+
+          <a class="card-phone"
+             [href]="'tel:' + telHref(location.phone)"
+             (click)="$event.stopPropagation()">☎ {{ location.phone }}</a>
+
+          <span class="card-scope" [class.scope-barber]="location.scope === 'barber'">
+            {{ location.scope === 'barber' ? 'Salon barbier' : 'Salon de coiffure' }}
+          </span>
 
         </li>
       </ul>

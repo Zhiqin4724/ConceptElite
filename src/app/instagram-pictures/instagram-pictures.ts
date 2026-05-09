@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 import { StylistService } from '../../service/stylist.service';
 
 interface InstagramPicture {
@@ -11,9 +12,9 @@ interface InstagramPicture {
 @Component({
   selector: 'app-instagram-pictures',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './instagram-pictures.html',
-  styleUrls: ['./instagram-pictures.css'],
+  styleUrl: './instagram-pictures.css',
 })
 export class InstagramPicturesComponent implements OnInit {
   pictures: InstagramPicture[] = [];
@@ -23,9 +24,8 @@ export class InstagramPicturesComponent implements OnInit {
   nextSlide: InstagramPicture[] = [];
   isAnimating = false;
   animationClass = '';
-  
+
   selectedPicture: InstagramPicture | null = null;
-  showModal = false;
 
   constructor(private stylistService: StylistService) {}
 
@@ -48,6 +48,11 @@ export class InstagramPicturesComponent implements OnInit {
     });
     
     this.currentSlide = this.getSlice(0);
+
+    // Keep track of selection for visual emphasis in the bento grid.
+    if (this.pictures.length > 0) {
+      this.selectedPicture = this.pictures[0];
+    }
   }
 
   get canGoPrev(): boolean {
@@ -70,12 +75,6 @@ export class InstagramPicturesComponent implements OnInit {
 
   openPicture(picture: InstagramPicture): void {
     this.selectedPicture = picture;
-    this.showModal = true;
-  }
-
-  closeModal(): void {
-    this.showModal = false;
-    this.selectedPicture = null;
   }
 
   private getSlice(index: number): InstagramPicture[] {

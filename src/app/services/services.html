@@ -1,118 +1,43 @@
 <div class="services-component">
-    <div class="services-card-component">
-        <div class="services-column">
-            <div class="services-card-img">
-                <div class="services-card-front-content">
-                    <div class="services-card-picture">
-                        <img [src]="services[0].logo" [alt]="services[0].title + ' icon'" />
-                    </div>
-                    <div class="services-card-title">{{ services[0].title }}</div>
-                </div>
+  <header class="services-heading">
+    <span class="services-heading__eyebrow">{{ 'services.eyebrow' | translate }}</span>
+    <h2 class="services-heading__title">{{ 'services.title' | translate }}</h2>
+    <p class="services-heading__subtitle">{{ 'services.subtitle' | translate }}</p>
+    <span class="services-heading__divider" aria-hidden="true"></span>
+  </header>
 
-                <div class="services-card-back-content">
-                    <div class="services-card-details">
-                        <div class="services-list-choices">
-                            <div class="services-list-choices-title">Haircut</div>
-                            <div class="services-list-choices-detail">Women</div>
-                            <div class="services-list-choices-detail">Men</div>
-                            <div class="services-list-choices-detail">Boys(0 - 11 years old)</div>
-                            <div class="services-list-choices-detail">Girls(0 - 11 years old)</div>
-                        </div>
-                        <div class="services-list-prices">
-                            <div class="services-list-choices-title">Price</div>
-                            <div class="services-list-choices-detail">36.00$</div>
-                            <div class="services-list-choices-detail">27.83$</div>
-                            <div class="services-list-choices-detail">23.00$</div>
-                            <div class="services-list-choices-detail">26.00$</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="services-card-img">
-                <div class="services-card-front-content">
-                    <div class="services-card-picture">
-                        <img [src]="services[1].logo" [alt]="services[1].title + ' icon'" />
-                    </div>
-                    <div class="services-card-title">{{ services[1].title }}</div>
-                </div>
+  <div
+    class="services-bento"
+    [class.services-bento--single]="isSingleService()"
+  >
+    <article
+      class="bento-tile"
+      *ngFor="let service of services(); let i = index"
+      [attr.data-index]="i"
+    >
+      <div class="bento-tile__cover" [style.background-image]="'url(' + service.image + ')'">
+        <span class="bento-tile__cover-eyebrow">{{ 'services.tarifs' | translate }}</span>
+        <h3 class="bento-tile__cover-title">{{ 'services.cards.' + service.key + '.title' | translate }}</h3>
+        <span class="bento-tile__cover-hint">{{ 'services.hover' | translate }}</span>
+      </div>
 
-                <div class="services-card-back-content">
-                    <div class="services-card-details">
-                        <div class="services-list-choices">
-                            <div class="services-list-choices-title">Haircut</div>
-                            <div class="services-list-choices-detail">Women</div>
-                            <div class="services-list-choices-detail">Men</div>
-                            <div class="services-list-choices-detail">Boys(0 - 11 years old)</div>
-                            <div class="services-list-choices-detail">Girls(0 - 11 years old)</div>
-                        </div>
-                        <div class="services-list-prices">
-                            <div class="services-list-choices-title">Price</div>
-                            <div class="services-list-choices-detail">36.00$</div>
-                            <div class="services-list-choices-detail">27.83$</div>
-                            <div class="services-list-choices-detail">23.00$</div>
-                            <div class="services-list-choices-detail">26.00$</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <header class="bento-tile__head">
+        <div class="bento-tile__icon">
+          <img [src]="service.logo" [alt]="('services.cards.' + service.key + '.title' | translate) + ' icon'" />
         </div>
-        <div class="services-column">
-            <div class="services-card-img">
-                <div class="services-card-front-content">
-                    <div class="services-card-picture">
-                        <img [src]="services[2].logo" [alt]="services[2].title + ' icon'" />
-                    </div>
-                    <div class="services-card-title">{{ services[2].title }}</div>
-                </div>
-
-                <div class="services-card-back-content">
-                    <div class="services-card-details">
-                        <div class="services-list-choices">
-                            <div class="services-list-choices-title">Haircut</div>
-                            <div class="services-list-choices-detail">Women</div>
-                            <div class="services-list-choices-detail">Men</div>
-                            <div class="services-list-choices-detail">Boys(0 - 11 years old)</div>
-                            <div class="services-list-choices-detail">Girls(0 - 11 years old)</div>
-                        </div>
-                        <div class="services-list-prices">
-                            <div class="services-list-choices-title">Price</div>
-                            <div class="services-list-choices-detail">36.00$</div>
-                            <div class="services-list-choices-detail">27.83$</div>
-                            <div class="services-list-choices-detail">23.00$</div>
-                            <div class="services-list-choices-detail">26.00$</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="services-card-img">
-                <div class="services-card-front-content">
-                    <div class="services-card-picture">
-                        <img [src]="services[3].logo" [alt]="services[3].title + ' icon'" />
-                    </div>
-                    <div class="services-card-title">{{ services[3].title }}</div>
-                </div>
-
-                <div class="services-card-back-content">
-                    <div class="services-card-details">
-                        <div class="services-list-choices">
-                            <div class="services-list-choices-title">Haircut</div>
-                            <div class="services-list-choices-detail">Women</div>
-                            <div class="services-list-choices-detail">Men</div>
-                            <div class="services-list-choices-detail">Boys(0 - 11 years old)</div>
-                            <div class="services-list-choices-detail">Girls(0 - 11 years old)</div>
-                        </div>
-                        <div class="services-list-prices">
-                            <div class="services-list-choices-title">Price</div>
-                            <div class="services-list-choices-detail">36.00$</div>
-                            <div class="services-list-choices-detail">27.83$</div>
-                            <div class="services-list-choices-detail">23.00$</div>
-                            <div class="services-list-choices-detail">26.00$</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <div class="bento-tile__heading">
+          <span class="bento-tile__eyebrow">{{ 'services.tarifs' | translate }}</span>
+          <h3 class="bento-tile__title">{{ 'services.cards.' + service.key + '.title' | translate }}</h3>
         </div>
+      </header>
 
-    </div>
+      <ul class="bento-tile__list">
+        <li class="bento-tile__row" *ngFor="let row of service.rows">
+          <span class="bento-tile__label">{{ 'services.cards.' + service.key + '.rows.' + row.key | translate }}</span>
+          <span class="bento-tile__dots" aria-hidden="true"></span>
+          <span class="bento-tile__price">{{ row.price }}</span>
+        </li>
+      </ul>
+    </article>
+  </div>
 </div>

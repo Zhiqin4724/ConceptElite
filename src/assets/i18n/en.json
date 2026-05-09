@@ -1,0 +1,161 @@
+{
+  "nav": {
+    "aboutUs": "About us",
+    "service": "Services",
+    "location": "Location",
+    "shop": "Shop",
+    "home": "Home",
+    "booking": "Booking",
+    "switchToBarber": "BARBER",
+    "switchToCoiffure": "COIFFURE"
+  },
+  "hero": {
+    "coiffure": {
+      "title": "The art of enhancing your",
+      "highlight": "beauty",
+      "subtitle": "Expertise · Elegance · Perfection",
+      "cta": "Book an appointment"
+    },
+    "barber": {
+      "title": "The art of sculpting your",
+      "highlight": "style",
+      "subtitle": "Precision · Tradition · Character",
+      "cta": "Book a cut"
+    }
+  },
+  "about": {
+    "coiffure": {
+      "services": {
+        "eyebrow": "Expert Hair Services",
+        "title": "Top-Grade Care, Delivered by Professionals",
+        "body": "Concept Elite Coiffure is where craft meets care. Every cut, colour and treatment is performed by seasoned stylists who have spent years mastering their discipline — so you walk out with hair that looks, feels and behaves the way you want it to.",
+        "welcome": "Welcome to Concept Elite Coiffure.",
+        "cta": "EXPLORE OUR SERVICES",
+        "imageAlt": "Concept Elite Coiffure salon lounge"
+      },
+      "products": {
+        "eyebrow": "Curated Product Selection",
+        "title": "Premium Products for Every Hair Need",
+        "body": "From everyday care to professional-grade treatments, our in-salon boutique stocks a wide range of trusted brands. Whatever your hair type, texture or routine, our team will guide you to the right products to keep your style at its best between visits.",
+        "welcome": "Discover what your hair has been waiting for.",
+        "cta": "EXPLORE OUR PRODUCTS",
+        "imageAlt": "Concept Elite Coiffure product display"
+      }
+    },
+    "barber": {
+      "services": {
+        "eyebrow": "Precision Barbering for Men",
+        "title": "Sharp Cuts, Crafted by Master Barbers",
+        "body": "Concept Elite Barber is built around precision. Our barbers specialise in men's cuts, fades, beard sculpting and hot-towel shaves — every line clean, every transition seamless. You're in the chair of a true professional, and it shows the moment you stand up.",
+        "welcome": "Welcome to Concept Elite Barber.",
+        "cta": "EXPLORE OUR SERVICES",
+        "imageAlt": "Concept Elite Barber shop interior"
+      },
+      "products": {
+        "eyebrow": "Grooming Essentials",
+        "title": "Products Engineered for Men",
+        "body": "Pomades, beard oils, clay, styling creams and skincare — hand-picked for the modern man and the cuts we deliver. Whatever your hair type or grooming routine, we'll match you with the right products so your look holds long after you leave the chair.",
+        "welcome": "Sharp on the chair. Sharp at home.",
+        "cta": "EXPLORE OUR PRODUCTS",
+        "imageAlt": "Concept Elite Barber grooming products"
+      }
+    }
+  },
+  "services": {
+    "eyebrow": "Services & Pricing",
+    "title": "Our Services & Pricing",
+    "subtitle": "Discover our full range of hair services and transparent pricing — from precision cuts to bespoke color, every experience is crafted by our expert stylists.",
+    "tarifs": "Pricing",
+    "hover": "Hover to view prices",
+    "cards": {
+      "haircut": {
+        "title": "Haircut",
+        "rows": {
+          "women": "Women",
+          "men": "Men",
+          "boys": "Boys (0 - 11 years old)",
+          "girls": "Girls (0 - 11 years old)"
+        }
+      },
+      "styling": {
+        "title": "Styling",
+        "rows": {
+          "blowdry": "Blow-dry",
+          "updo": "Updo",
+          "bridal": "Bridal styling",
+          "extensions": "Hair extensions setup"
+        }
+      },
+      "coloration": {
+        "title": "Coloration",
+        "rows": {
+          "single": "Single process",
+          "highlights": "Highlights",
+          "balayage": "Balayage",
+          "correction": "Color correction"
+        }
+      },
+      "treatment": {
+        "title": "Treatment",
+        "rows": {
+          "deep": "Deep conditioning",
+          "keratin": "Keratin smoothing",
+          "scalp": "Scalp massage",
+          "olaplex": "Olaplex repair"
+        }
+      },
+      "barberCut": {
+        "title": "Barber Cut",
+        "rows": {
+          "classic": "Classic Cut",
+          "fade": "Skin Fade",
+          "beard": "Beard Trim",
+          "shave": "Hot Towel Shave"
+        }
+      }
+    }
+  },
+  "footer": {
+    "info": "INFORMATION",
+    "phone": "PHONE NUMBER",
+    "location": "LOCATION",
+    "contact": "CONTACT US",
+    "email": "Email"
+  },
+  "stylists": {
+    "title": "Our hairstylists & barbers",
+    "subtitle": "A passionate team at your service",
+    "allCities": "All cities",
+    "prev": "Previous",
+    "next": "Next",
+    "viewProfile": "View profile of",
+    "detail": {
+      "back": "Back",
+      "portfolioLabel": "Recent work",
+      "noImages": "No work available at the moment.",
+      "notFound": "Stylist not found.",
+      "backHome": "← Back",
+      "prevPage": "Previous page",
+      "nextPage": "Next page"
+    }
+  },
+  "portfolio": {
+    "title": "Our work",
+    "subtitle": "Discover our finest creations",
+    "heroTitleStart": "OUR FINEST",
+    "heroTitleHighlight": "CREATIONS",
+    "heroTitleEnd": "ON DISPLAY",
+    "heroSubtitle": "Explore the work of our artists — every creation is unique and designed to make you shine.",
+    "ctaPrimary": "VIEW THE SELECTION",
+    "ctaSecondary": "ALL OUR WORK"
+  },
+  "videos": {
+    "title": "Our videos",
+    "subtitle": "Follow us on Instagram for more content"
+  },
+  "language": {
+    "label": "Language",
+    "fr": "FR",
+    "en": "EN"
+  }
+}

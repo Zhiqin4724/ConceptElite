@@ -1,0 +1,161 @@
+{
+  "nav": {
+    "aboutUs": "À propos",
+    "service": "Services",
+    "location": "Adresse",
+    "shop": "Boutique",
+    "home": "Accueil",
+    "booking": "Réservation",
+    "switchToBarber": "BARBIER",
+    "switchToCoiffure": "COIFFURE"
+  },
+  "hero": {
+    "coiffure": {
+      "title": "L'art de sublimer votre",
+      "highlight": "beauté",
+      "subtitle": "Expertise · Élégance · Perfection",
+      "cta": "Prenez rendez-vous"
+    },
+    "barber": {
+      "title": "L'art de sculpter votre",
+      "highlight": "style",
+      "subtitle": "Précision · Tradition · Caractère",
+      "cta": "Réserver une coupe"
+    }
+  },
+  "about": {
+    "coiffure": {
+      "services": {
+        "eyebrow": "Services capillaires experts",
+        "title": "Des soins de haut niveau, par des professionnels",
+        "body": "Concept Elite Coiffure, c'est l'union du savoir-faire et de l'attention. Chaque coupe, coloration et soin est réalisé par des stylistes chevronnés qui ont passé des années à perfectionner leur métier — vous repartez avec des cheveux qui ont l'allure, la sensation et la tenue que vous recherchez.",
+        "welcome": "Bienvenue chez Concept Elite Coiffure.",
+        "cta": "DÉCOUVRIR NOS SERVICES",
+        "imageAlt": "Salon Concept Elite Coiffure"
+      },
+      "products": {
+        "eyebrow": "Une sélection de produits",
+        "title": "Des produits premium pour chaque besoin",
+        "body": "Des soins quotidiens aux traitements professionnels, notre boutique en salon propose une large gamme de marques de confiance. Quel que soit votre type de cheveux, notre équipe vous guidera vers les bons produits pour entretenir votre style entre les visites.",
+        "welcome": "Découvrez ce que vos cheveux attendaient.",
+        "cta": "DÉCOUVRIR NOS PRODUITS",
+        "imageAlt": "Présentation des produits Concept Elite Coiffure"
+      }
+    },
+    "barber": {
+      "services": {
+        "eyebrow": "Barberie de précision",
+        "title": "Des coupes nettes, par des barbiers maîtres",
+        "body": "Concept Elite Le Barbier est bâti sur la précision. Nos barbiers se spécialisent dans les coupes homme, dégradés, sculpting de barbe et rasages à la serviette chaude — chaque ligne nette, chaque transition impeccable. Vous êtes entre les mains d'un véritable professionnel, et cela se voit dès que vous quittez la chaise.",
+        "welcome": "Bienvenue chez Concept Elite Le Barbier.",
+        "cta": "DÉCOUVRIR NOS SERVICES",
+        "imageAlt": "Intérieur de Concept Elite Le Barbier"
+      },
+      "products": {
+        "eyebrow": "Essentiels du grooming",
+        "title": "Des produits pensés pour l'homme",
+        "body": "Pommades, huiles à barbe, argile, crèmes coiffantes et soins de la peau — choisis pour l'homme moderne et les coupes que nous offrons. Quel que soit votre type de cheveux ou votre routine, nous vous orienterons vers les bons produits pour que votre style tienne longtemps après votre passage.",
+        "welcome": "Net sur la chaise. Net à la maison.",
+        "cta": "DÉCOUVRIR NOS PRODUITS",
+        "imageAlt": "Produits de grooming Concept Elite Le Barbier"
+      }
+    }
+  },
+  "services": {
+    "eyebrow": "Services & Tarifs",
+    "title": "Nos services et nos tarifs",
+    "subtitle": "Découvrez notre gamme complète de services capillaires et nos prix transparents — de la coupe précise à la coloration sur mesure, chaque prestation est réalisée par nos stylistes experts.",
+    "tarifs": "Tarifs",
+    "hover": "Survolez pour voir les prix",
+    "cards": {
+      "haircut": {
+        "title": "Coupe",
+        "rows": {
+          "women": "Femme",
+          "men": "Homme",
+          "boys": "Garçon (0 - 11 ans)",
+          "girls": "Fille (0 - 11 ans)"
+        }
+      },
+      "styling": {
+        "title": "Coiffage",
+        "rows": {
+          "blowdry": "Brushing",
+          "updo": "Chignon",
+          "bridal": "Coiffure de mariée",
+          "extensions": "Pose d'extensions"
+        }
+      },
+      "coloration": {
+        "title": "Coloration",
+        "rows": {
+          "single": "Couleur unique",
+          "highlights": "Mèches",
+          "balayage": "Balayage",
+          "correction": "Correction de couleur"
+        }
+      },
+      "treatment": {
+        "title": "Soin",
+        "rows": {
+          "deep": "Soin profond",
+          "keratin": "Lissage à la kératine",
+          "scalp": "Massage du cuir chevelu",
+          "olaplex": "Réparation Olaplex"
+        }
+      },
+      "barberCut": {
+        "title": "Coupe Barbier",
+        "rows": {
+          "classic": "Coupe classique",
+          "fade": "Skin Fade",
+          "beard": "Taille de barbe",
+          "shave": "Rasage à la serviette chaude"
+        }
+      }
+    }
+  },
+  "footer": {
+    "info": "INFORMATION",
+    "phone": "TÉLÉPHONE",
+    "location": "ADRESSES",
+    "contact": "NOUS JOINDRE",
+    "email": "Courriel"
+  },
+  "stylists": {
+    "title": "Nos coiffeurs & coiffeuses",
+    "subtitle": "Une équipe passionnée à votre service",
+    "allCities": "Toutes les villes",
+    "prev": "Précédent",
+    "next": "Suivant",
+    "viewProfile": "Voir le profil de",
+    "detail": {
+      "back": "Retour",
+      "portfolioLabel": "Réalisations récentes",
+      "noImages": "Aucune réalisation disponible pour le moment.",
+      "notFound": "Coiffeur introuvable.",
+      "backHome": "← Retour",
+      "prevPage": "Page précédente",
+      "nextPage": "Page suivante"
+    }
+  },
+  "portfolio": {
+    "title": "Nos réalisations",
+    "subtitle": "Découvrez nos plus belles créations",
+    "heroTitleStart": "NOS PLUS",
+    "heroTitleHighlight": "BELLES",
+    "heroTitleEnd": "CRÉATIONS",
+    "heroSubtitle": "Découvrez le travail de nos artistes, chaque réalisation est unique et pensée pour vous mettre en valeur.",
+    "ctaPrimary": "VOIR LA SÉLECTION",
+    "ctaSecondary": "TOUS NOS TRAVAUX"
+  },
+  "videos": {
+    "title": "Nos vidéos",
+    "subtitle": "Suivez-nous sur Instagram pour plus de contenu"
+  },
+  "language": {
+    "label": "Langue",
+    "fr": "FR",
+    "en": "EN"
+  }
+}

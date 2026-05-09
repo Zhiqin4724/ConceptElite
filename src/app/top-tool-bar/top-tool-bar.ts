@@ -1,31 +1,57 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy, inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { filter, Subscription } from 'rxjs';
+import { ThemeService, ThemeMode } from '../../service/theme.service';
+import { LanguageService } from '../../service/language.service';
 
 interface NavLink {
-  label: string;
+  /** Translation key under `nav.*` */
+  labelKey: string;
   fragment: string;
+  route?: string;
+  action?: 'toggle-theme' | 'toggle-lang';
 }
 
-const NAV_CONFIG: Record<string, NavLink[]> = {
-  '/': [
-    { label: 'ABOUT US', fragment: 'about-us' },
-    { label: 'SERVICE', fragment: 'services' },
-    { label: 'LOCATION', fragment: 'location' },
-  ],
-  '/stylists': [
-    { label: 'HOME', fragment: '' },
-    { label: 'BOOKING', fragment: 'booking' },
-  ],
+const SHOP_LINK: NavLink = { labelKey: 'nav.shop', fragment: '', route: '/shop' };
+
+const HOME_NAV: NavLink[] = [
+  { labelKey: 'nav.aboutUs', fragment: 'about-us' },
+  { labelKey: 'nav.service', fragment: 'services' },
+  { labelKey: 'nav.location', fragment: 'location' },
+  SHOP_LINK,
+];
+
+const STYLIST_NAV: NavLink[] = [
+  { labelKey: 'nav.home', fragment: '' },
+  { labelKey: 'nav.booking', fragment: 'booking' },
+  SHOP_LINK,
+];
+
+const DEFAULT_NAV: NavLink[] = [
+  { labelKey: 'nav.home', fragment: '' },
+  SHOP_LINK,
+];
+
+const LANG_TOGGLE: NavLink = {
+  labelKey: 'language.label',
+  fragment: '',
+  action: 'toggle-lang',
 };
 
-const DEFAULT_NAV: NavLink[] = [{ label: 'HOME', fragment: '' }];
+/** Routes that are considered "home" (one per theme). */
+const HOME_PATHS = new Set<string>(['/', '/coiffure', '/le-barbier']);
+
+const THEME_PATHS: Record<ThemeMode, string> = {
+  coiffure: '/coiffure',
+  barber: '/le-barbier',
+};
 
 @Component({
   selector: 'app-top-tool-bar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './top-tool-bar.html',
   styleUrls: ['./top-tool-bar.css'],
 })
@@ -34,10 +60,37 @@ export class TopToolBar implements OnInit, OnDestroy {
   isHidden = false;
   navLinks: NavLink[] = [];
 
+  /** Theme implied by the *current URL* (independent of the ThemeService signal,
+   *  which may briefly lag during navigation). */
+  private currentTheme: ThemeMode = 'coiffure';
+
+  private readonly theme = inject(ThemeService);
+  private readonly language = inject(LanguageService);
+
   private lastScrollY = 0;
   private routerSub!: Subscription;
 
   constructor(private router: Router) {}
+
+  /** Translation key for the *target* theme. */
+  get themeToggleKey(): string {
+    return this.currentTheme === 'coiffure'
+      ? 'nav.switchToBarber'
+      : 'nav.switchToCoiffure';
+  }
+
+  /** Visible label on the language pill — shows the *other* language. */
+  get languageToggleLabel(): string {
+    return this.language.lang() === 'fr' ? 'EN' : 'FR';
+  }
+
+  private buildLinks(base: NavLink[]): NavLink[] {
+    return [
+      ...base,
+      LANG_TOGGLE,
+      { labelKey: this.themeToggleKey, fragment: '', action: 'toggle-theme' },
+    ];
+  }
 
   ngOnInit() {
     // Use '/' as fallback if url is empty on first load
@@ -55,21 +108,41 @@ export class TopToolBar implements OnInit, OnDestroy {
     this.routerSub?.unsubscribe();
   }
 
+  private currentPath(): string {
+    return (this.router.url || '/').split('?')[0].split('#')[0];
+  }
+
+  private isHomePath(path: string): boolean {
+    return HOME_PATHS.has(path);
+  }
+
+  private themeFromPath(path: string): ThemeMode {
+    return path === '/le-barbier' ? 'barber' : 'coiffure';
+  }
+
   private updateNavLinks(url: string) {
     const path = url.split('?')[0].split('#')[0];
+    this.currentTheme = this.themeFromPath(path);
 
-    if (path === '/') {
-      this.navLinks = NAV_CONFIG['/'];
+    let base: NavLink[];
+    if (this.isHomePath(path)) {
+      base = HOME_NAV;
     } else if (path.startsWith('/stylists/')) {
-      this.navLinks = NAV_CONFIG['/stylists'];
+      base = STYLIST_NAV;
     } else {
-      this.navLinks = DEFAULT_NAV;
+      // Off-home routes (e.g. /shop): keep the toggle aligned with the
+      // theme service so visitors don't lose their preference.
+      this.currentTheme = this.theme.mode();
+      base = DEFAULT_NAV;
     }
+
+    this.navLinks = this.buildLinks(base);
   }
 
   goHome() {
     this.closeMenu();
-    this.router.navigate(['/']);
+    // Stay on the current theme's URL (so SEO/theme stay aligned).
+    this.router.navigate([THEME_PATHS[this.currentTheme]]);
   }
 
   toggleMenu(event: MouseEvent) {
@@ -81,16 +154,46 @@ export class TopToolBar implements OnInit, OnDestroy {
     this.isMenuOpen = false;
   }
 
-  navigateTo(fragment: string) {
+  navigateTo(link: NavLink | string) {
     this.closeMenu();
 
-    if (!fragment) {
-      this.router.navigate(['/']);
+    // Backwards-compat: callers may still pass a raw fragment string.
+    const target: NavLink =
+      typeof link === 'string'
+        ? { labelKey: '', fragment: link }
+        : link;
+
+    if (target.action === 'toggle-lang') {
+      this.language.toggle();
+      // Refresh nav so the theme-toggle label re-renders for the new lang.
+      this.updateNavLinks(this.router.url || '/');
       return;
     }
 
-    // If already on home, just scroll
-    if (this.router.url === '/') {
+    if (target.action === 'toggle-theme') {
+      // Navigate to the other theme's URL — the home component's SEO service
+      // will switch the theme to match.
+      const next: ThemeMode =
+        this.currentTheme === 'coiffure' ? 'barber' : 'coiffure';
+      this.router.navigate([THEME_PATHS[next]]);
+      return;
+    }
+
+    if (target.route) {
+      this.router.navigate([target.route]);
+      return;
+    }
+
+    const fragment = target.fragment;
+    const homePath = THEME_PATHS[this.currentTheme];
+
+    if (!fragment) {
+      this.router.navigate([homePath]);
+      return;
+    }
+
+    // If already on a home path, just scroll
+    if (this.isHomePath(this.currentPath())) {
       setTimeout(() => {
         document
           .getElementById(fragment)
@@ -98,7 +201,7 @@ export class TopToolBar implements OnInit, OnDestroy {
       }, 100);
     } else {
       // Navigate home first, then scroll after the page loads
-      this.router.navigate(['/']).then(() => {
+      this.router.navigate([homePath]).then(() => {
         setTimeout(() => {
           document
             .getElementById(fragment)

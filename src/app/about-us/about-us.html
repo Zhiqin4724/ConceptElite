@@ -1,1 +1,44 @@
-<p>about-us works!</p>
+<section class="about-us">
+  <div class="about-us__inner">
+    <ng-container *ngFor="let block of blocks(); let i = index">
+      <article
+        class="about-us__row"
+        [class.about-us__row--reverse]="i % 2 === 1"
+      >
+        <div class="about-us__media">
+          <img
+            [src]="block.image"
+            [alt]="'about.' + themeKey() + '.' + block.i18nKey + '.imageAlt' | translate"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="about-us__content">
+          <div class="about-us__eyebrow">
+            {{ 'about.' + themeKey() + '.' + block.i18nKey + '.eyebrow' | translate }}
+          </div>
+          <h2 class="about-us__title">
+            {{ 'about.' + themeKey() + '.' + block.i18nKey + '.title' | translate }}
+          </h2>
+          <p class="about-us__body">
+            {{ 'about.' + themeKey() + '.' + block.i18nKey + '.body' | translate }}
+          </p>
+          <p class="about-us__welcome" *ngIf="block.hasWelcome">
+            <strong>
+              {{ 'about.' + themeKey() + '.' + block.i18nKey + '.welcome' | translate }}
+            </strong>
+          </p>
+          <button
+            *ngIf="block.cta"
+            type="button"
+            class="about-us__cta"
+            (click)="handleCta(block.cta)"
+          >
+            {{ 'about.' + themeKey() + '.' + block.i18nKey + '.cta' | translate }}
+          </button>
+        </div>
+      </article>
+    </ng-container>
+  </div>
+</section>
+

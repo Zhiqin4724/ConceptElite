@@ -6,15 +6,29 @@
 
 <!-- Inline nav (desktop) -->
 <nav class="top-nav inline-nav">
-<a *ngFor="let link of navLinks" (click)="navigateTo(link.fragment)" style="cursor: pointer;">
-    {{ link.label }}
+<a *ngFor="let link of navLinks"
+   (click)="navigateTo(link)"
+   [class.theme-toggle]="link.action === 'toggle-theme'"
+   [class.lang-toggle]="link.action === 'toggle-lang'"
+   style="cursor: pointer;">
+    <ng-container *ngIf="link.action === 'toggle-lang'; else translatedLabelInline">
+        {{ languageToggleLabel }}
+    </ng-container>
+    <ng-template #translatedLabelInline>{{ link.labelKey | translate }}</ng-template>
 </a>
 </nav>
 
 <!-- Dropdown nav (mobile) -->
 <nav class="top-nav dropdown-nav" [class.open]="isMenuOpen" (click)="$event.stopPropagation()">
-    <a *ngFor="let link of navLinks" (click)="navigateTo(link.fragment)" style="cursor: pointer;">
-        {{ link.label }}
+    <a *ngFor="let link of navLinks"
+       (click)="navigateTo(link)"
+       [class.theme-toggle]="link.action === 'toggle-theme'"
+       [class.lang-toggle]="link.action === 'toggle-lang'"
+       style="cursor: pointer;">
+        <ng-container *ngIf="link.action === 'toggle-lang'; else translatedLabelDropdown">
+            {{ languageToggleLabel }}
+        </ng-container>
+        <ng-template #translatedLabelDropdown>{{ link.labelKey | translate }}</ng-template>
     </a>
 </nav>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 import { StylistService } from '../../service/stylist.service';
 
 interface InstagramVideo {
@@ -12,7 +13,7 @@ interface InstagramVideo {
 @Component({
   selector: 'app-instagram-videos',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './instagram-videos.html',
   styleUrls: ['./instagram-videos.css'],
 })

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { StylistService } from '../../service/stylist.service';
 import { Stylist } from '../../model/stylist.model';
 import { PaginationComponent } from '../../component/pagination/pagination.component';
@@ -12,6 +13,7 @@ import { Location } from '@angular/common';
   imports: [
     CommonModule,
     RouterModule,
+    TranslateModule,
     PaginationComponent,
   ],
   templateUrl: './stylist-detail.html',

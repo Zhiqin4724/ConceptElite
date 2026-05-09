@@ -162,6 +162,7 @@
 
     .inline-nav {
         display: flex;
+        align-items: center;
         position: static;
         top: auto;
         left: auto;
@@ -178,6 +179,9 @@
     .inline-nav a {
         color: #121212;
         padding: 0 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        line-height: 1;
     }
 
     .dropdown-nav {

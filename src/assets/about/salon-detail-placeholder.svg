@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Salon Detail Placeholder</title>
+  <desc id="desc">Neutral placeholder image for the About Us products section.</desc>
+  <defs>
+    <linearGradient id="bg2" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f3efe9"/>
+      <stop offset="100%" stop-color="#d8d2ca"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg2)"/>
+  <rect x="150" y="170" width="900" height="560" fill="none" stroke="#8d745b" stroke-width="8" opacity="0.5"/>
+  <path d="M220 700 C360 520, 500 860, 680 620 C760 520, 920 640, 1010 520" fill="none" stroke="#8c1e1b" stroke-width="16" opacity="0.35"/>
+  <text x="600" y="405" text-anchor="middle" font-family="Georgia, serif" font-size="58" fill="#2f2f34" letter-spacing="2">
+    ABOUT US
+  </text>
+  <text x="600" y="485" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#515158" letter-spacing="3">
+    PRODUCTS PLACEHOLDER
+  </text>
+</svg>

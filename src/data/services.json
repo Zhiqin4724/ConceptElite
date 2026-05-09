@@ -1,0 +1,62 @@
+{
+  "coiffure": [
+    {
+      "key": "haircut",
+      "logo": "../../assets/icon/haircut.png",
+      "image": "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=80",
+      "rows": [
+        { "key": "women", "price": "36.00$" },
+        { "key": "men", "price": "27.00$" },
+        { "key": "boys", "price": "23.00$" },
+        { "key": "girls", "price": "26.00$" }
+      ]
+    },
+    {
+      "key": "styling",
+      "logo": "../../assets/icon/hair-comb.png",
+      "image": "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80",
+      "rows": [
+        { "key": "blowdry", "price": "40.00$" },
+        { "key": "updo", "price": "75.00$" },
+        { "key": "bridal", "price": "120.00$" },
+        { "key": "extensions", "price": "95.00$" }
+      ]
+    },
+    {
+      "key": "coloration",
+      "logo": "../../assets/icon/color-palette.png",
+      "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80",
+      "rows": [
+        { "key": "single", "price": "85.00$" },
+        { "key": "highlights", "price": "130.00$" },
+        { "key": "balayage", "price": "180.00$" },
+        { "key": "correction", "price": "210.00$" }
+      ]
+    },
+    {
+      "key": "treatment",
+      "logo": "../../assets/icon/massage.png",
+      "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80",
+      "rows": [
+        { "key": "deep", "price": "45.00$" },
+        { "key": "keratin", "price": "160.00$" },
+        { "key": "scalp", "price": "35.00$" },
+        { "key": "olaplex", "price": "55.00$" }
+      ]
+    }
+  ],
+  "barber": [
+    {
+      "key": "barberCut",
+      "logo": "../../assets/icon/haircut.png",
+      "image": "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=1200&q=80",
+      "rows": [
+        { "key": "classic", "price": "30.00$" },
+        { "key": "fade", "price": "35.00$" },
+        { "key": "beard", "price": "15.00$" },
+        { "key": "shave", "price": "25.00$" }
+      ]
+    }
+  ]
+}
+

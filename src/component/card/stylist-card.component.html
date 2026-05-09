@@ -1,4 +1,4 @@
-<a class="stylist-card" [routerLink]="['/stylists', stylist.slug]" [attr.aria-label]="'Voir le profil de ' + stylist.name">
+<a class="stylist-card" [routerLink]="['/stylists', stylist.slug]" [attr.aria-label]="('stylists.viewProfile' | translate) + ' ' + stylist.name">
 
   <div class="card-image-wrapper">
     <img
