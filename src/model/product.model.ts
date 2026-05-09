@@ -1,89 +1,99 @@
 /**
- * Models for the Squarespace Commerce Catalog.
- * Reference: https://developers.squarespace.com/commerce-apis/retrieve-all-products
+ * Models for the Square Catalog API.
+ * Reference: https://developer.squareup.com/reference/square/catalog-api
  */
 
-export interface Money {
-  value: string; // decimal string, e.g. "29.99"
-  currency: string; // ISO 4217, e.g. "USD"
+export interface SquareMoney {
+  amount: number; // in smallest currency unit (cents)
+  currency: string; // ISO 4217, e.g. "CAD"
 }
 
-export interface ProductImage {
-  id?: string;
-  url: string;
-  altText?: string;
-}
-
-export interface ProductVariant {
-  id: string;
+export interface SquareItemVariationData {
+  item_id?: string;
+  name?: string;
   sku?: string;
-  pricing: {
-    basePrice: Money;
-    salePrice?: Money;
-    onSale?: boolean;
-  };
-  stock?: {
-    quantity?: number;
-    unlimited?: boolean;
-  };
-  attributes?: Record<string, string>;
+  price_money?: SquareMoney;
+  pricing_type?: 'FIXED_PRICING' | 'VARIABLE_PRICING';
+  track_inventory?: boolean;
+  location_overrides?: unknown[];
+}
+
+export interface SquareItemVariation {
+  id: string;
+  type: 'ITEM_VARIATION';
+  item_variation_data?: SquareItemVariationData;
+}
+
+export interface SquareItemData {
+  name?: string;
+  description?: string;
+  abbreviation?: string;
+  label_color?: string;
+  category_id?: string;
+  tax_ids?: string[];
+  modifier_list_info?: unknown[];
+  variations?: SquareItemVariation[];
+  product_type?: string;
+  skip_modifier_screen?: boolean;
+  image_ids?: string[];
+  is_archived?: boolean;
+}
+
+export interface SquareCategoryData {
+  name?: string;
+}
+
+export interface SquareImageData {
+  name?: string;
+  url?: string;
+  caption?: string;
+}
+
+export interface SquareCatalogObject {
+  type: 'ITEM' | 'CATEGORY' | 'IMAGE' | 'TAX' | 'ITEM_VARIATION' | string;
+  id: string;
+  updated_at?: string;
+  version?: number;
+  is_deleted?: boolean;
+  present_at_all_locations?: boolean;
+  item_data?: SquareItemData;
+  category_data?: SquareCategoryData;
+  image_data?: SquareImageData;
+}
+
+export interface SquareCatalogResponse {
+  objects?: SquareCatalogObject[];
+  cursor?: string;
+  related_objects?: SquareCatalogObject[];
+}
+
+export interface SquareInventoryCount {
+  catalog_object_id?: string;
+  quantity?: string;
+  state?: string;
 }
 
 /**
- * Normalized catalog item used by the UI. Built from a Squarespace product.
+ * Normalized catalog item used by the UI.
  */
 export interface CatalogItem {
   id: string;
   name: string;
   description: string;
-  brand?: string;
+  brand: string;
+  productType: string;
+  treatment: string;
   categories: string[];
-  tags: string[];
+  // tags: string[];
   imageUrl?: string;
-  images: ProductImage[];
+  images: { url: string; altText?: string }[];
   price: number;
   salePrice?: number;
   currency: string;
   onSale: boolean;
   inStock: boolean;
   url?: string;
-  raw?: SquarespaceProduct;
-}
-
-/**
- * Raw response shapes from the Squarespace API.
- */
-export interface SquarespaceProduct {
-  id: string;
-  type?: string;
-  storePageId?: string;
-  productPage?: { id: string; url?: string };
-  url?: string;
-  name?: string;
-  description?: string;
-  tags?: string[];
-  isVisible?: boolean;
-  variantAttributes?: string[];
-  variants?: ProductVariant[];
-  images?: ProductImage[];
-  storeSettings?: { isVisible?: boolean };
-  // Squarespace v1 uses `structure` in some payloads
-  structure?: {
-    name?: string;
-    description?: string;
-    tags?: string[];
-    categories?: string[];
-  };
-  categories?: string[];
-}
-
-export interface ProductCatalogResponse {
-  products: SquarespaceProduct[];
-  pagination?: {
-    nextPageUrl?: string;
-    nextPageCursor?: string;
-    hasNextPage?: boolean;
-  };
+  raw?: SquareCatalogObject;
 }
 
 export interface CatalogFacet {

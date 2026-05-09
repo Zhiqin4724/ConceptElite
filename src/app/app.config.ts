@@ -1,7 +1,7 @@
 import { ApplicationConfig, provideAppInitializer, inject } from '@angular/core';
 
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import {
   TranslateLoader,
@@ -25,7 +25,7 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }),
     ),
     provideAnimations(),
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
     importProvidersFrom(
       TranslateModule.forRoot({
         loader: {

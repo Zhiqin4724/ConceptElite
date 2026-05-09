@@ -1,9 +1,50 @@
 .shop {
-  padding: 24px clamp(16px, 4vw, 48px);
+  padding: 48px clamp(16px, 4vw, 48px) 24px;
   max-width: 1400px;
   margin: 0 auto;
+  margin-top: 50px;
+  }
+  
+  .shop__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 40px 0;
+    padding-bottom: 40px;
+  }
+  
+  .shop__page-btn {
+    box-shadow: none !important;
+    border: 1px solid #e0e0e0;
+    background-color: #ffffff;
+    color: #333;
+    width: 36px;
+    height: 36px;
+    transition: all 0.2s ease;
+  }
+  
+  /* Selected state - using your primary theme color */
+  .shop__page-btn--selected {
+    background-color: #000 !important;
+    /* Set your brand color here */
+    color: #fff !important;
+    border-color: #000 !important;
+    font-weight: 700;
+  }
+  
+  .pagination-ellipsis {
+    color: #999;
+    font-weight: 600;
+    padding: 0 2px;
+    letter-spacing: 1px;
 }
 
+/* Hover effect for non-selected buttons */
+.shop__page-btn:not(.shop__page-btn--selected):hover {
+  background-color: #f5f5f5;
+  border-color: #ccc;
+}
 .shop__header {
   display: flex;
   flex-wrap: wrap;
@@ -256,4 +297,26 @@
 
 .product-card__tags {
   margin-top: 4px;
+}
+
+/* ── Pagination ── */
+.shop__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 40px;
+  padding-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.shop__page-btn {
+  min-width: 36px;
+  height: 36px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.shop__page-btn[color="primary"] {
+  font-weight: 700;
 }
